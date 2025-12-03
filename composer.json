@@ -57,6 +57,12 @@
             "dont-discover": []
         }
     },
+    "repositories": [
+        {
+            "type": "path",
+            "url": "./nova"
+        }
+    ],
     "config": {
         "optimize-autoloader": true,
         "preferred-install": "dist",
