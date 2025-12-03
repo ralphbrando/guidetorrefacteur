@@ -1,0 +1,381 @@
+@extends('layouts.app')
+
+@section('title', 'Formulaire Torréfacteur')
+
+@section('content')
+<div class="row">
+    <div class="col-12">
+        <div class="card shadow">
+            <div class="card-header bg-primary text-white">
+                <h4 class="mb-0">Informations à remplir AVANT le 21 Décembre 2025</h4>
+            </div>
+            <div class="card-body">
+                <form method="POST" action="{{ route('torrefacteur.save') }}" enctype="multipart/form-data">
+                    @csrf
+
+                    <h5 class="mb-3">Informations générales</h5>
+                    
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="nom_brulerie" class="form-label">Nom de la Brulerie <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control @error('nom_brulerie') is-invalid @enderror" 
+                                   id="nom_brulerie" name="nom_brulerie" 
+                                   value="{{ old('nom_brulerie', $torrefacteur->nom_brulerie ?? '') }}" required>
+                            @error('nom_brulerie')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="col-md-6">
+                            <label for="region_id" class="form-label">Région <span class="text-danger">*</span></label>
+                            <select class="form-select @error('region_id') is-invalid @enderror" 
+                                    id="region_id" name="region_id" required>
+                                <option value="">Sélectionner une région</option>
+                                @foreach($regions as $region)
+                                    <option value="{{ $region->id }}" 
+                                            {{ old('region_id', $torrefacteur->region_id ?? '') == $region->id ? 'selected' : '' }}>
+                                        {{ $region->nom }}
+                                    </option>
+                                @endforeach
+                            </select>
+                            @error('region_id')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="departement_id" class="form-label">Département <span class="text-danger">*</span></label>
+                            <select class="form-select @error('departement_id') is-invalid @enderror" 
+                                    id="departement_id" name="departement_id" required>
+                                <option value="">Sélectionner un département</option>
+                                @if($torrefacteur && $torrefacteur->region)
+                                    @foreach($torrefacteur->region->departements as $dept)
+                                        <option value="{{ $dept->id }}" 
+                                                {{ old('departement_id', $torrefacteur->departement_id ?? '') == $dept->id ? 'selected' : '' }}>
+                                            {{ $dept->nom }}
+                                        </option>
+                                    @endforeach
+                                @endif
+                            </select>
+                            @error('departement_id')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="col-md-6">
+                            <label for="logo" class="form-label">Logo</label>
+                            <input type="file" class="form-control @error('logo') is-invalid @enderror" 
+                                   id="logo" name="logo" accept="image/*">
+                            @error('logo')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                            @if($torrefacteur && $torrefacteur->logo)
+                                <small class="text-muted">Logo actuel: <a href="{{ asset('storage/' . $torrefacteur->logo) }}" target="_blank">Voir</a></small>
+                            @endif
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="texte_descriptif" class="form-label">Texte descriptif</label>
+                        <textarea class="form-control @error('texte_descriptif') is-invalid @enderror" 
+                                  id="texte_descriptif" name="texte_descriptif" rows="4">{{ old('texte_descriptif', $torrefacteur->texte_descriptif ?? '') }}</textarea>
+                        @error('texte_descriptif')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+
+                    <h5 class="mb-3 mt-4">Informations de contact</h5>
+
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="prenom_nom_representant" class="form-label">Prénom NOM du représentant légal <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control @error('prenom_nom_representant') is-invalid @enderror" 
+                                   id="prenom_nom_representant" name="prenom_nom_representant" 
+                                   value="{{ old('prenom_nom_representant', $torrefacteur->prenom_nom_representant ?? '') }}" required>
+                            @error('prenom_nom_representant')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="col-md-6">
+                            <label for="telephone" class="form-label">Téléphone <span class="text-danger">*</span></label>
+                            <input type="tel" class="form-control @error('telephone') is-invalid @enderror" 
+                                   id="telephone" name="telephone" 
+                                   value="{{ old('telephone', $torrefacteur->telephone ?? '') }}" required>
+                            @error('telephone')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="email" class="form-label">Email <span class="text-danger">*</span></label>
+                            <input type="email" class="form-control @error('email') is-invalid @enderror" 
+                                   id="email" name="email" 
+                                   value="{{ old('email', $torrefacteur->email ?? '') }}" required>
+                            @error('email')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="col-md-6">
+                            <label for="site_internet" class="form-label">Site Internet</label>
+                            <input type="url" class="form-control @error('site_internet') is-invalid @enderror" 
+                                   id="site_internet" name="site_internet" 
+                                   value="{{ old('site_internet', $torrefacteur->site_internet ?? '') }}">
+                            @error('site_internet')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="adresse" class="form-label">Adresse <span class="text-danger">*</span></label>
+                        <textarea class="form-control @error('adresse') is-invalid @enderror" 
+                                  id="adresse" name="adresse" rows="2" required>{{ old('adresse', $torrefacteur->adresse ?? '') }}</textarea>
+                        @error('adresse')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="photo" class="form-label">Photo (dimensions fixes)</label>
+                        <input type="file" class="form-control @error('photo') is-invalid @enderror" 
+                               id="photo" name="photo" accept="image/*">
+                        @error('photo')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                        @if($torrefacteur && $torrefacteur->photo)
+                            <small class="text-muted">Photo actuelle: <a href="{{ asset('storage/' . $torrefacteur->photo) }}" target="_blank">Voir</a></small>
+                        @endif
+                    </div>
+
+                    <h5 class="mb-3 mt-4">Équipements</h5>
+                    <div class="row mb-3">
+                        @foreach($equipements as $equipement)
+                            <div class="col-md-4 mb-2">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" 
+                                           id="equipement_{{ $equipement->id }}" 
+                                           name="equipements[]" 
+                                           value="{{ $equipement->id }}"
+                                           {{ $torrefacteur && $torrefacteur->equipements->contains($equipement->id) ? 'checked' : '' }}>
+                                    <label class="form-check-label" for="equipement_{{ $equipement->id }}">
+                                        {{ $equipement->nom }}
+                                    </label>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+
+                    <h5 class="mb-3 mt-4">Informations supplémentaires</h5>
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="machine_torrefier" class="form-label">Machine à torréfier</label>
+                            <input type="text" class="form-control" 
+                                   id="machine_torrefier" name="machine_torrefier" 
+                                   value="{{ old('machine_torrefier', $torrefacteur->machine_torrefier ?? '') }}">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="capacite_machine" class="form-label">Capacité de la machine</label>
+                            <input type="text" class="form-control" 
+                                   id="capacite_machine" name="capacite_machine" 
+                                   value="{{ old('capacite_machine', $torrefacteur->capacite_machine ?? '') }}">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" 
+                                       id="ateliers_decouvertes" name="ateliers_decouvertes" value="1"
+                                       {{ old('ateliers_decouvertes', $torrefacteur->ateliers_decouvertes ?? false) ? 'checked' : '' }}>
+                                <label class="form-check-label" for="ateliers_decouvertes">
+                                    Organisation d'ateliers découvertes
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" 
+                                       id="degustations" name="degustations" value="1"
+                                       {{ old('degustations', $torrefacteur->degustations ?? false) ? 'checked' : '' }}>
+                                <label class="form-check-label" for="degustations">
+                                    Dégustations
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="labels" class="form-label">Labels</label>
+                        <input type="text" class="form-control" 
+                               id="labels" name="labels" 
+                               value="{{ old('labels', $torrefacteur->labels ?? '') }}">
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" 
+                                       id="arabica" name="arabica" value="1"
+                                       {{ old('arabica', $torrefacteur->arabica ?? false) ? 'checked' : '' }}>
+                                <label class="form-check-label" for="arabica">Arabica</label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" 
+                                       id="robusta" name="robusta" value="1"
+                                       {{ old('robusta', $torrefacteur->robusta ?? false) ? 'checked' : '' }}>
+                                <label class="form-check-label" for="robusta">Robusta</label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" 
+                                       id="geisha" name="geisha" value="1"
+                                       {{ old('geisha', $torrefacteur->geisha ?? false) ? 'checked' : '' }}>
+                                <label class="form-check-label" for="geisha">Geisha</label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" 
+                                       id="thes" name="thes" value="1"
+                                       {{ old('thes', $torrefacteur->thes ?? false) ? 'checked' : '' }}>
+                                <label class="form-check-label" for="thes">Thés</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" 
+                                       id="cacao" name="cacao" value="1"
+                                       {{ old('cacao', $torrefacteur->cacao ?? false) ? 'checked' : '' }}>
+                                <label class="form-check-label" for="cacao">Cacao</label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" 
+                                       id="accessoires_cafe_domestique" name="accessoires_cafe_domestique" value="1"
+                                       {{ old('accessoires_cafe_domestique', $torrefacteur->accessoires_cafe_domestique ?? false) ? 'checked' : '' }}>
+                                <label class="form-check-label" for="accessoires_cafe_domestique">Accessoires café domestique</label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" 
+                                       id="machines_domestiques" name="machines_domestiques" value="1"
+                                       {{ old('machines_domestiques', $torrefacteur->machines_domestiques ?? false) ? 'checked' : '' }}>
+                                <label class="form-check-label" for="machines_domestiques">Machines domestiques</label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" 
+                                       id="accessoires_thes" name="accessoires_thes" value="1"
+                                       {{ old('accessoires_thes', $torrefacteur->accessoires_thes ?? false) ? 'checked' : '' }}>
+                                <label class="form-check-label" for="accessoires_thes">Accessoires thés</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" 
+                                       id="espace_professionnels" name="espace_professionnels" value="1"
+                                       {{ old('espace_professionnels', $torrefacteur->espace_professionnels ?? false) ? 'checked' : '' }}>
+                                <label class="form-check-label" for="espace_professionnels">Espace professionnels</label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" 
+                                       id="cascara" name="cascara" value="1"
+                                       {{ old('cascara', $torrefacteur->cascara ?? false) ? 'checked' : '' }}>
+                                <label class="form-check-label" for="cascara">Cascara</label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" 
+                                       id="formations_sca" name="formations_sca" value="1"
+                                       {{ old('formations_sca', $torrefacteur->formations_sca ?? false) ? 'checked' : '' }}>
+                                <label class="form-check-label" for="formations_sca">Formations SCA</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    @if($champsSupplementaires->count() > 0)
+                        <h5 class="mb-3 mt-4">Champs supplémentaires</h5>
+                        @foreach($champsSupplementaires as $champ)
+                            <div class="mb-3">
+                                <label for="champ_{{ $champ->id }}" class="form-label">
+                                    {{ $champ->nom }}
+                                    @if($champ->obligatoire)
+                                        <span class="text-danger">*</span>
+                                    @endif
+                                </label>
+                                @if($champ->type === 'textarea')
+                                    <textarea class="form-control" 
+                                              id="champ_{{ $champ->id }}" 
+                                              name="champ_{{ $champ->id }}"
+                                              {{ $champ->obligatoire ? 'required' : '' }}>{{ old('champ_' . $champ->id, $torrefacteur && $torrefacteur->champsSupplementaires->contains($champ->id) ? $torrefacteur->champsSupplementaires->find($champ->id)->pivot->valeur : '') }}</textarea>
+                                @else
+                                    <input type="{{ $champ->type }}" 
+                                           class="form-control" 
+                                           id="champ_{{ $champ->id }}" 
+                                           name="champ_{{ $champ->id }}"
+                                           value="{{ old('champ_' . $champ->id, $torrefacteur && $torrefacteur->champsSupplementaires->contains($champ->id) ? $torrefacteur->champsSupplementaires->find($champ->id)->pivot->valeur : '') }}"
+                                           {{ $champ->obligatoire ? 'required' : '' }}>
+                                @endif
+                            </div>
+                        @endforeach
+                    @endif
+
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-4">
+                        <a href="{{ route('torrefacteur.preview') }}" class="btn btn-outline-secondary">Prévisualiser</a>
+                        <button type="submit" class="btn btn-primary">Enregistrer</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@push('scripts')
+<script>
+document.getElementById('region_id').addEventListener('change', function() {
+    const regionId = this.value;
+    const departementSelect = document.getElementById('departement_id');
+    
+    departementSelect.innerHTML = '<option value="">Chargement...</option>';
+    
+    if (regionId) {
+        fetch(`/api/departements/${regionId}`)
+            .then(response => response.json())
+            .then(data => {
+                departementSelect.innerHTML = '<option value="">Sélectionner un département</option>';
+                data.forEach(dept => {
+                    const option = document.createElement('option');
+                    option.value = dept.id;
+                    option.textContent = dept.nom;
+                    departementSelect.appendChild(option);
+                });
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                departementSelect.innerHTML = '<option value="">Erreur de chargement</option>';
+            });
+    } else {
+        departementSelect.innerHTML = '<option value="">Sélectionner un département</option>';
+    }
+});
+</script>
+@endpush
+@endsection
+

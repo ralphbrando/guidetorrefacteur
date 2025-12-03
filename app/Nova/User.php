@@ -1,0 +1,76 @@
+<?php
+
+namespace App\Nova;
+
+use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\Email;
+use Laravel\Nova\Fields\Select;
+use Laravel\Nova\Fields\Password;
+use Laravel\Nova\Http\Requests\NovaRequest;
+use Laravel\Nova\Resource;
+
+class User extends Resource
+{
+    public static $model = \App\Models\User::class;
+
+    public static $title = 'name';
+
+    public static $search = [
+        'id', 'name', 'email',
+    ];
+
+    public function fields(NovaRequest $request)
+    {
+        return [
+            ID::make()->sortable(),
+
+            Text::make('Nom', 'name')
+                ->sortable()
+                ->rules('required', 'max:255'),
+
+            Email::make('Email')
+                ->sortable()
+                ->rules('required', 'email', 'max:255')
+                ->creationRules('unique:users,email')
+                ->updateRules('unique:users,email,{{resourceId}}'),
+
+            Password::make('Mot de passe', 'password')
+                ->onlyOnForms()
+                ->creationRules('required', 'string', 'min:8')
+                ->updateRules('nullable', 'string', 'min:8'),
+
+            Select::make('Rôle', 'role')
+                ->options([
+                    'admin' => 'Administrateur',
+                    'commercial1' => 'Commercial 1',
+                    'commercial2' => 'Commercial 2',
+                    'torrefacteur' => 'Torréfacteur',
+                ])
+                ->displayUsingLabels()
+                ->rules('required'),
+        ];
+    }
+
+    public function cards(NovaRequest $request)
+    {
+        return [];
+    }
+
+    public function filters(NovaRequest $request)
+    {
+        return [];
+    }
+
+    public function lenses(NovaRequest $request)
+    {
+        return [];
+    }
+
+    public function actions(NovaRequest $request)
+    {
+        return [];
+    }
+}
+
+
