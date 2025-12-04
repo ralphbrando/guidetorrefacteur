@@ -7,7 +7,7 @@ use Illuminate\Database\Seeder;
 
 class OffrePartenaireSeeder extends Seeder
 {
-    public function run(): void
+    public function run()
     {
         $offres = [
             [

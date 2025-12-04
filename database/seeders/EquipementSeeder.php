@@ -7,7 +7,7 @@ use Illuminate\Database\Seeder;
 
 class EquipementSeeder extends Seeder
 {
-    public function run(): void
+    public function run()
     {
         $equipements = [
             ['nom' => 'Machine à torréfier', 'icone' => 'machine.svg', 'ordre' => 1],

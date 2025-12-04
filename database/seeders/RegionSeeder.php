@@ -7,7 +7,7 @@ use Illuminate\Database\Seeder;
 
 class RegionSeeder extends Seeder
 {
-    public function run(): void
+    public function run()
     {
         $regions = [
             ['nom' => 'Auvergne-Rhône-Alpes', 'ordre' => 1],
