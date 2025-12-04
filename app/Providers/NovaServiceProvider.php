@@ -18,6 +18,16 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
         parent::boot();
         
         Nova::name('Guide des Torréfacteurs');
+
+        Nova::sortResourcesBy(function ($resource) {
+            return property_exists($resource, 'priority')
+                ? $resource::$priority
+                : $resource::label();
+        });
+
+        Nova::serving(function () {
+            Nova::theme(asset('vendor/nova/css/coffee-theme.css'));
+        });
     }
 
     /**

@@ -16,6 +16,10 @@ class ChampSupplementaire extends Resource
 
     public static $title = 'nom';
 
+    public static $group = 'Offres & équipements';
+
+    public static $priority = 40;
+
     public static $search = [
         'id', 'nom',
     ];

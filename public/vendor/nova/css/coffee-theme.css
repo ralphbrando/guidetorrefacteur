@@ -1,0 +1,245 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&display=swap');
+
+:root {
+    --primary: #c98c5a;
+    --primary-dark: #a2663b;
+    --primary-70: rgba(201, 140, 90, 0.7);
+    --primary-50: rgba(201, 140, 90, 0.5);
+    --primary-30: rgba(201, 140, 90, 0.3);
+    --primary-10: rgba(201, 140, 90, 0.1);
+    --sidebar-icon: #f3d9b1;
+    --logo: #150a05;
+    --20: #1f120d;
+    --30: #2b1a13;
+    --40: #38241a;
+    --50: #4a2f21;
+    --60: #694634;
+    --70: #c98c5a;
+    --80: #f3ede7;
+    --90: #fdfaf7;
+}
+
+body {
+    font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background-color: #0c0503;
+}
+
+.bg-grad-sidebar {
+    background-image: linear-gradient(180deg, #2b140c 0%, #0b0604 100%);
+}
+
+.bg-logo {
+    background: linear-gradient(135deg, #2e1209, #120603);
+}
+
+.sidebar-label {
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-size: 0.7rem;
+}
+
+.content {
+    background: radial-gradient(circle at top right, rgba(201, 140, 90, 0.08), transparent 40%) #0f0603;
+}
+
+.btn-primary,
+.btn-primary.disabled,
+.btn-primary:disabled {
+    background: linear-gradient(120deg, #c98c5a, #f5d7b0);
+    border-color: #c98c5a;
+    color: #1a0d07;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+    background: linear-gradient(120deg, #f5d7b0, #ffd9a2);
+    border-color: #f5d7b0;
+    box-shadow: 0 10px 30px rgba(201, 140, 90, 0.35);
+}
+
+.card {
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 12px 32px rgba(5, 3, 2, 0.45);
+    border-radius: 1.2rem;
+    overflow: hidden;
+}
+
+.table th {
+    background-color: rgba(201, 140, 90, 0.1);
+    color: #fdfaf7;
+}
+
+.table tr:hover td {
+    background-color: rgba(201, 140, 90, 0.06);
+}
+
+.pagination .page-link {
+    border-radius: 999px;
+}
+
+.pagination .page-item.active .page-link {
+    background-color: #c98c5a;
+    border-color: #c98c5a;
+}
+
+.nova-nav-groups {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.nova-nav-section {
+    border-radius: 1rem;
+    background: rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 0.5rem 0.75rem;
+    transition: border-color 0.3s ease, background 0.3s ease;
+}
+
+.nova-nav-section[open] {
+    border-color: rgba(201, 140, 90, 0.5);
+    background: rgba(201, 140, 90, 0.08);
+}
+
+.nova-nav-summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    cursor: pointer;
+    color: #fdfaf7;
+    list-style: none;
+}
+
+.nova-nav-summary::-webkit-details-marker {
+    display: none;
+}
+
+.nav-section-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(201, 140, 90, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+}
+
+.nav-section-label {
+    font-size: 0.95rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    flex: 1;
+}
+
+.nav-section-caret {
+    width: 14px;
+    height: 14px;
+    border-right: 2px solid rgba(255, 255, 255, 0.8);
+    border-bottom: 2px solid rgba(255, 255, 255, 0.8);
+    transform: rotate(45deg);
+    transition: transform 0.3s ease;
+}
+
+.nova-nav-section[open] .nav-section-caret {
+    transform: rotate(225deg);
+}
+
+.nova-submenu {
+    margin: 0.5rem 0 0.25rem;
+    padding-left: 0.25rem;
+}
+
+.nova-submenu-item {
+    margin: 0.35rem 0;
+}
+
+.nova-submenu-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.3rem 0.2rem;
+    border-radius: 0.6rem;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.nova-submenu-link:hover,
+.nova-submenu-link:focus {
+    color: #fdfaf7;
+    transform: translateX(4px);
+}
+
+.nova-submenu-dot {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+}
+
+[dusk="torrefacteurs-resource-link"] .nova-submenu-dot::before {
+    content: '☕';
+}
+
+[dusk="offre-partenaires-resource-link"] .nova-submenu-dot::before {
+    content: '🎯';
+}
+
+[dusk="equipements-resource-link"] .nova-submenu-dot::before {
+    content: '🛠️';
+}
+
+[dusk="champ-supplementaires-resource-link"] .nova-submenu-dot::before {
+    content: '📝';
+}
+
+[dusk="regions-resource-link"] .nova-submenu-dot::before {
+    content: '🗺️';
+}
+
+[dusk="departements-resource-link"] .nova-submenu-dot::before {
+    content: '📍';
+}
+
+[dusk="paiements-resource-link"] .nova-submenu-dot::before {
+    content: '💳';
+}
+
+[dusk="users-resource-link"] .nova-submenu-dot::before {
+    content: '👤';
+}
+
+.text-80,
+.text-90 {
+    color: #f3ede7 !important;
+}
+
+.form-input,
+.form-select,
+.form-control,
+.form-search {
+    border-radius: 0.9rem;
+    border: 1px solid rgba(201, 140, 90, 0.3);
+    background-color: rgba(15, 8, 6, 0.8);
+    color: #fdfaf7;
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-control:focus,
+.form-search:focus {
+    border-color: rgba(201, 140, 90, 0.8);
+    box-shadow: 0 0 0 0.15rem rgba(201, 140, 90, 0.35);
+}
+
+.bg-white {
+    background-color: rgba(15, 8, 6, 0.85) !important;
+}
+

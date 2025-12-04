@@ -14,6 +14,10 @@ class Departement extends Resource
 
     public static $title = 'nom';
 
+    public static $group = 'Territoires';
+
+    public static $priority = 60;
+
     public static $search = [
         'id', 'nom', 'code',
     ];

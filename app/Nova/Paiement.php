@@ -18,6 +18,10 @@ class Paiement extends Resource
 
     public static $title = 'numero_facture';
 
+    public static $group = 'Administration';
+
+    public static $priority = 70;
+
     public static $search = [
         'id', 'numero_facture', 'nom_societe', 'transaction_id',
     ];

@@ -15,6 +15,10 @@ class Region extends Resource
 
     public static $title = 'nom';
 
+    public static $group = 'Territoires';
+
+    public static $priority = 50;
+
     public static $search = [
         'id', 'nom',
     ];

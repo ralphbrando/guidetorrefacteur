@@ -15,6 +15,10 @@ class User extends Resource
 
     public static $title = 'name';
 
+    public static $group = 'Administration';
+
+    public static $priority = 80;
+
     public static $search = [
         'id', 'name', 'email',
     ];
