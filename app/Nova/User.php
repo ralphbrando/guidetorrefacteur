@@ -4,7 +4,6 @@ namespace App\Nova;
 
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Fields\Email;
 use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Password;
 use Illuminate\Http\Request;
@@ -29,7 +28,7 @@ class User extends Resource
                 ->sortable()
                 ->rules('required', 'max:255'),
 
-            Email::make('Email')
+            Text::make('Email', 'email')
                 ->sortable()
                 ->rules('required', 'email', 'max:255')
                 ->creationRules('unique:users,email')

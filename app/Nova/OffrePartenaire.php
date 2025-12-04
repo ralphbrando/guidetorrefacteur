@@ -43,17 +43,17 @@ class OffrePartenaire extends Resource
                 ->rules('required', 'numeric', 'min:0'),
 
             Number::make('Nombre de Guides', 'nombre_guides')
-                ->default(0)
-                ->rules('required', 'integer', 'min:0'),
+                ->rules('required', 'integer', 'min:0')
+                ->default(0),
 
             Number::make('Limite')
-                ->nullable()
                 ->help('null = illimité')
-                ->rules('nullable', 'integer', 'min:0'),
+                ->rules('nullable', 'integer', 'min:0')
+                ->nullable(),
 
             Number::make('Réservé', 'reserve')
-                ->default(0)
-                ->rules('required', 'integer', 'min:0'),
+                ->rules('required', 'integer', 'min:0')
+                ->default(0),
 
             Boolean::make('Actif')
                 ->default(true),
