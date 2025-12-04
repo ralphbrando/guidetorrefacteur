@@ -24,7 +24,7 @@ class CreateTorrefacteurEquipementsTable extends Migration
                 ->on('equipements')
                 ->onDelete('cascade');
             
-            $table->unique(['torrefacteur_id', 'equipement_id']);
+            $table->unique(['torrefacteur_id', 'equipement_id'], 'te_torref_equip_unique');
         });
     }
 

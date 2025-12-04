@@ -28,7 +28,7 @@ class CreateTorrefacteurChampsSupplementairesTable extends Migration
                 ->on('champs_supplementaires')
                 ->onDelete('cascade');
             
-            $table->unique(['torrefacteur_id', 'champ_supplementaire_id']);
+            $table->unique(['torrefacteur_id', 'champ_supplementaire_id'], 'tcs_torref_champ_unique');
         });
     }
 
