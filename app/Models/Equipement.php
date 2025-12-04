@@ -17,12 +17,9 @@ class Equipement extends Model
         'actif',
     ];
 
-    protected function casts(): array
-    {
-        return [
-            'actif' => 'boolean',
-        ];
-    }
+    protected $casts = [
+        'actif' => 'boolean',
+    ];
 
     public function torrefacteurs()
     {

@@ -18,12 +18,9 @@ class EmailCampagne extends Model
         'date_envoi',
     ];
 
-    protected function casts(): array
-    {
-        return [
-            'date_envoi' => 'datetime',
-        ];
-    }
+    protected $casts = [
+        'date_envoi' => 'datetime',
+    ];
 }
 
 

@@ -17,13 +17,10 @@ class ChampSupplementaire extends Model
         'actif',
     ];
 
-    protected function casts(): array
-    {
-        return [
-            'obligatoire' => 'boolean',
-            'actif' => 'boolean',
-        ];
-    }
+    protected $casts = [
+        'obligatoire' => 'boolean',
+        'actif' => 'boolean',
+    ];
 
     public function torrefacteurs()
     {

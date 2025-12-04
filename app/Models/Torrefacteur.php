@@ -44,26 +44,23 @@ class Torrefacteur extends Model
         'formations_sca',
     ];
 
-    protected function casts(): array
-    {
-        return [
-            'valide' => 'boolean',
-            'date_validation' => 'datetime',
-            'ateliers_decouvertes' => 'boolean',
-            'degustations' => 'boolean',
-            'arabica' => 'boolean',
-            'robusta' => 'boolean',
-            'geisha' => 'boolean',
-            'thes' => 'boolean',
-            'cacao' => 'boolean',
-            'accessoires_cafe_domestique' => 'boolean',
-            'machines_domestiques' => 'boolean',
-            'accessoires_thes' => 'boolean',
-            'espace_professionnels' => 'boolean',
-            'cascara' => 'boolean',
-            'formations_sca' => 'boolean',
-        ];
-    }
+    protected $casts = [
+        'valide' => 'boolean',
+        'date_validation' => 'datetime',
+        'ateliers_decouvertes' => 'boolean',
+        'degustations' => 'boolean',
+        'arabica' => 'boolean',
+        'robusta' => 'boolean',
+        'geisha' => 'boolean',
+        'thes' => 'boolean',
+        'cacao' => 'boolean',
+        'accessoires_cafe_domestique' => 'boolean',
+        'machines_domestiques' => 'boolean',
+        'accessoires_thes' => 'boolean',
+        'espace_professionnels' => 'boolean',
+        'cascara' => 'boolean',
+        'formations_sca' => 'boolean',
+    ];
 
     public function user()
     {

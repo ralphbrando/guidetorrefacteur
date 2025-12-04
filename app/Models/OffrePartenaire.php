@@ -21,13 +21,10 @@ class OffrePartenaire extends Model
         'ordre',
     ];
 
-    protected function casts(): array
-    {
-        return [
-            'prix' => 'decimal:2',
-            'actif' => 'boolean',
-        ];
-    }
+    protected $casts = [
+        'prix' => 'decimal',
+        'actif' => 'boolean',
+    ];
 
     public function torrefacteurs()
     {

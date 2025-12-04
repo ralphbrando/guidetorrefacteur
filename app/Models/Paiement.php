@@ -22,13 +22,10 @@ class Paiement extends Model
         'date_paiement',
     ];
 
-    protected function casts(): array
-    {
-        return [
-            'montant' => 'decimal:2',
-            'date_paiement' => 'datetime',
-        ];
-    }
+    protected $casts = [
+        'montant' => 'decimal',
+        'date_paiement' => 'datetime',
+    ];
 
     public function torrefacteur()
     {
