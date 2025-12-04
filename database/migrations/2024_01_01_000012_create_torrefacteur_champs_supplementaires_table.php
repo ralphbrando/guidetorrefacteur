@@ -4,25 +4,35 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
+class CreateTorrefacteurChampsSupplementairesTable extends Migration
 {
-    public function up(): void
+    public function up()
     {
         Schema::create('torrefacteur_champs_supplementaires', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('torrefacteur_id')->constrained()->onDelete('cascade');
-            $table->foreignId('champ_supplementaire_id')->constrained('champs_supplementaires')->onDelete('cascade');
+            $table->unsignedBigInteger('torrefacteur_id');
+            $table->unsignedBigInteger('champ_supplementaire_id');
             $table->text('valeur')->nullable();
             $table->timestamps();
+            
+            $table->foreign('torrefacteur_id', 'tcs_torrefacteur_fk')
+                ->references('id')
+                ->on('torrefacteurs')
+                ->onDelete('cascade');
+            
+            $table->foreign('champ_supplementaire_id', 'tcs_champ_supp_fk')
+                ->references('id')
+                ->on('champs_supplementaires')
+                ->onDelete('cascade');
             
             $table->unique(['torrefacteur_id', 'champ_supplementaire_id']);
         });
     }
 
-    public function down(): void
+    public function down()
     {
         Schema::dropIfExists('torrefacteur_champs_supplementaires');
     }
-};
+}
 
 
