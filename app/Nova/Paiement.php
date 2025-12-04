@@ -9,7 +9,7 @@ use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Textarea;
 use Laravel\Nova\Fields\DateTime;
-use Laravel\Nova\Http\Requests\NovaRequest;
+use Illuminate\Http\Request;
 use Laravel\Nova\Resource;
 
 class Paiement extends Resource
@@ -22,7 +22,7 @@ class Paiement extends Resource
         'id', 'numero_facture', 'nom_societe', 'transaction_id',
     ];
 
-    public function fields(NovaRequest $request)
+    public function fields(Request $request)
     {
         return [
             ID::make()->sortable(),
@@ -75,22 +75,22 @@ class Paiement extends Resource
         ];
     }
 
-    public function cards(NovaRequest $request)
+    public function cards(Request $request)
     {
         return [];
     }
 
-    public function filters(NovaRequest $request)
+    public function filters(Request $request)
     {
         return [];
     }
 
-    public function lenses(NovaRequest $request)
+    public function lenses(Request $request)
     {
         return [];
     }
 
-    public function actions(NovaRequest $request)
+    public function actions(Request $request)
     {
         return [];
     }

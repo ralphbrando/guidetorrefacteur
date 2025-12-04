@@ -7,7 +7,7 @@ use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Textarea;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Boolean;
-use Laravel\Nova\Http\Requests\NovaRequest;
+use Illuminate\Http\Request;
 use Laravel\Nova\Resource;
 
 class OffrePartenaire extends Resource
@@ -20,7 +20,7 @@ class OffrePartenaire extends Resource
         'id', 'code', 'nom',
     ];
 
-    public function fields(NovaRequest $request)
+    public function fields(Request $request)
     {
         return [
             ID::make()->sortable(),
@@ -64,22 +64,22 @@ class OffrePartenaire extends Resource
         ];
     }
 
-    public function cards(NovaRequest $request)
+    public function cards(Request $request)
     {
         return [];
     }
 
-    public function filters(NovaRequest $request)
+    public function filters(Request $request)
     {
         return [];
     }
 
-    public function lenses(NovaRequest $request)
+    public function lenses(Request $request)
     {
         return [];
     }
 
-    public function actions(NovaRequest $request)
+    public function actions(Request $request)
     {
         return [];
     }

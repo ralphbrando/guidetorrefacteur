@@ -9,7 +9,7 @@ use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Fields\BelongsToMany;
-use Laravel\Nova\Http\Requests\NovaRequest;
+use Illuminate\Http\Request;
 use Laravel\Nova\Resource;
 
 class Equipement extends Resource
@@ -22,7 +22,7 @@ class Equipement extends Resource
         'id', 'nom',
     ];
 
-    public function fields(NovaRequest $request)
+    public function fields(Request $request)
     {
         return [
             ID::make()->sortable(),
@@ -48,22 +48,22 @@ class Equipement extends Resource
         ];
     }
 
-    public function cards(NovaRequest $request)
+    public function cards(Request $request)
     {
         return [];
     }
 
-    public function filters(NovaRequest $request)
+    public function filters(Request $request)
     {
         return [];
     }
 
-    public function lenses(NovaRequest $request)
+    public function lenses(Request $request)
     {
         return [];
     }
 
-    public function actions(NovaRequest $request)
+    public function actions(Request $request)
     {
         return [];
     }
