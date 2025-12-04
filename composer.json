@@ -60,7 +60,7 @@
     "repositories": [
         {
             "type": "path",
-            "url": "./nova/nova"
+            "url": "./nova"
         }
     ],
     "config": {
