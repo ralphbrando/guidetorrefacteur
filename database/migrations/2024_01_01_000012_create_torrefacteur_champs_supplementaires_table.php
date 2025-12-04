@@ -8,6 +8,9 @@ class CreateTorrefacteurChampsSupplementairesTable extends Migration
 {
     public function up()
     {
+        // Drop table if it exists (in case of previous failed migration)
+        Schema::dropIfExists('torrefacteur_champs_supplementaires');
+        
         Schema::create('torrefacteur_champs_supplementaires', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('torrefacteur_id');
