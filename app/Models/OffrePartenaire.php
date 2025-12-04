@@ -41,7 +41,12 @@ class OffrePartenaire extends Model
         if ($this->limite === null) {
             return true;
         }
-        return $this->reserve < $this->limite;
+        return ($this->reserve ?? 0) < $this->limite;
+    }
+    
+    public function getReserveAttribute($value)
+    {
+        return $value ?? 0;
     }
 }
 

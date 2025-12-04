@@ -72,18 +72,25 @@
                                                 <p class="mb-3 text-muted">{{ $offre->description }}</p>
                                                 <div class="d-flex align-items-baseline gap-2 mb-2">
                                                     <span class="fs-3 fw-bold" style="color: var(--coffee-accent);">
-                                                        {{ number_format($offre->prix, 2, ',', ' ') }} €
+                                                        @php
+                                                            $prix = (float)($offre->prix ?? 0);
+                                                            echo number_format($prix, 2, ',', ' ') . ' €';
+                                                        @endphp
                                                     </span>
-                                                    @if($offre->nombre_guides > 0)
+                                                    @if(isset($offre->nombre_guides) && $offre->nombre_guides > 0)
                                                         <span class="badge" style="background: var(--bg-glass-light); color: var(--text-secondary);">
                                                             <i class="bi bi-book me-1"></i>{{ $offre->nombre_guides }} Guides
                                                         </span>
                                                     @endif
                                                 </div>
-                                                @if($offre->limite)
+                                                @if(isset($offre->limite) && $offre->limite)
                                                     <small class="text-muted d-block mb-2">
                                                         <i class="bi bi-people me-1"></i>
-                                                        {{ $offre->limite - $offre->reserve }} places disponibles sur {{ $offre->limite }}
+                                                        @php
+                                                            $limite = (int)($offre->limite ?? 0);
+                                                            $reserve = (int)($offre->reserve ?? 0);
+                                                            echo ($limite - $reserve) . ' places disponibles sur ' . $limite;
+                                                        @endphp
                                                     </small>
                                                 @endif
                                                 @if(!$offre->isDisponible())
