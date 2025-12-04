@@ -5,15 +5,21 @@
 @section('content')
 <div class="row">
     <div class="col-12">
-        <div class="card shadow">
+        <div class="card shadow-lg fade-in-up">
             <div class="card-header bg-primary text-white">
-                <h4 class="mb-0">Informations à remplir AVANT le 21 Décembre 2025</h4>
+                <h4 class="mb-0 d-flex align-items-center gap-2">
+                    <i class="bi bi-file-earmark-text"></i>
+                    Informations à remplir AVANT le 21 Décembre 2025
+                </h4>
             </div>
             <div class="card-body">
                 <form method="POST" action="{{ route('torrefacteur.save') }}" enctype="multipart/form-data">
                     @csrf
 
-                    <h5 class="mb-3">Informations générales</h5>
+                    <div class="d-flex align-items-center gap-2 mb-4 pb-3 border-bottom" style="border-color: var(--border-color) !important;">
+                        <i class="bi bi-info-circle" style="color: var(--coffee-accent); font-size: 1.5rem;"></i>
+                        <h5 class="mb-0" style="color: var(--coffee-accent);">Informations générales</h5>
+                    </div>
                     
                     <div class="row mb-3">
                         <div class="col-md-6">
@@ -84,7 +90,10 @@
                         @enderror
                     </div>
 
-                    <h5 class="mb-3 mt-4">Informations de contact</h5>
+                    <div class="d-flex align-items-center gap-2 mb-4 mt-5 pb-3 border-bottom" style="border-color: var(--border-color) !important;">
+                        <i class="bi bi-telephone" style="color: var(--coffee-accent); font-size: 1.5rem;"></i>
+                        <h5 class="mb-0" style="color: var(--coffee-accent);">Informations de contact</h5>
+                    </div>
 
                     <div class="row mb-3">
                         <div class="col-md-6">
@@ -149,7 +158,10 @@
                         @endif
                     </div>
 
-                    <h5 class="mb-3 mt-4">Équipements</h5>
+                    <div class="d-flex align-items-center gap-2 mb-4 mt-5 pb-3 border-bottom" style="border-color: var(--border-color) !important;">
+                        <i class="bi bi-gear" style="color: var(--coffee-accent); font-size: 1.5rem;"></i>
+                        <h5 class="mb-0" style="color: var(--coffee-accent);">Équipements</h5>
+                    </div>
                     <div class="row mb-3">
                         @foreach($equipements as $equipement)
                             <div class="col-md-4 mb-2">
@@ -167,7 +179,10 @@
                         @endforeach
                     </div>
 
-                    <h5 class="mb-3 mt-4">Informations supplémentaires</h5>
+                    <div class="d-flex align-items-center gap-2 mb-4 mt-5 pb-3 border-bottom" style="border-color: var(--border-color) !important;">
+                        <i class="bi bi-plus-circle" style="color: var(--coffee-accent); font-size: 1.5rem;"></i>
+                        <h5 class="mb-0" style="color: var(--coffee-accent);">Informations supplémentaires</h5>
+                    </div>
                     <div class="row mb-3">
                         <div class="col-md-6">
                             <label for="machine_torrefier" class="form-label">Machine à torréfier</label>
@@ -311,7 +326,10 @@
                     </div>
 
                     @if($champsSupplementaires->count() > 0)
-                        <h5 class="mb-3 mt-4">Champs supplémentaires</h5>
+                        <div class="d-flex align-items-center gap-2 mb-4 mt-5 pb-3 border-bottom" style="border-color: var(--border-color) !important;">
+                            <i class="bi bi-list-ul" style="color: var(--coffee-accent); font-size: 1.5rem;"></i>
+                            <h5 class="mb-0" style="color: var(--coffee-accent);">Champs supplémentaires</h5>
+                        </div>
                         @foreach($champsSupplementaires as $champ)
                             <div class="mb-3">
                                 <label for="champ_{{ $champ->id }}" class="form-label">
@@ -337,9 +355,13 @@
                         @endforeach
                     @endif
 
-                    <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-4">
-                        <a href="{{ route('torrefacteur.preview') }}" class="btn btn-outline-secondary">Prévisualiser</a>
-                        <button type="submit" class="btn btn-primary">Enregistrer</button>
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-5 pt-4 border-top" style="border-color: var(--border-color) !important;">
+                        <a href="{{ route('torrefacteur.preview') }}" class="btn btn-outline-secondary">
+                            <i class="bi bi-eye me-2"></i>Prévisualiser
+                        </a>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="bi bi-check-circle me-2"></i>Enregistrer
+                        </button>
                     </div>
                 </form>
             </div>
