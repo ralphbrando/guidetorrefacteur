@@ -32,7 +32,7 @@ class Departement extends Resource
 
             Text::make('Code')
                 ->nullable()
-                ->maxlength(3),
+                ->rules('nullable', 'max:3'),
         ];
     }
 

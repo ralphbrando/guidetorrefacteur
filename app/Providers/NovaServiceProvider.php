@@ -16,6 +16,8 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     public function boot()
     {
         parent::boot();
+        
+        Nova::name('Guide des Torréfacteurs');
     }
 
     /**
