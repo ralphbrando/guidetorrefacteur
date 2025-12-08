@@ -9,7 +9,6 @@
             <img src="/img/template/logo.png" alt="Logo" class="tm-site-logo" style="flex-shrink: 0;"> 
             <span style="white-space: nowrap;">Prévisualisation de votre fiche</span>
         </h2>
-        <div class="tm-hr-container"><hr class="tm-hr"></div>
     </div>
     
     <div class="col-12">
@@ -120,7 +119,7 @@
                     @endif
                 </div>
             </div>
-            
+            <br>
             <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-5 pt-4" style="border-top: 2px solid #c79c60;">
                 <a href="{{ route('torrefacteur.form') }}" class="tm-more-button">
                     <i class="bi bi-pencil me-2"></i>Modifier
