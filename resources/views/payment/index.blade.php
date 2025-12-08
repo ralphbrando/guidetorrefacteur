@@ -154,7 +154,7 @@
                         <a href="{{ route('torrefacteur.form') }}" class="tm-more-button btn" style="background: #f5f5f5; color: #333; border: 2px solid #ddd; padding: 0.875rem 2rem; font-weight: 600; min-width: 150px; text-align: center; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; margin-right: 1rem;">
                             <i class="bi bi-arrow-left me-2"></i>Retour
                         </a>
-                        <button type="submit" class="tm-more-button btn" style="padding: 0.875rem 2rem; font-weight: 600; min-width: 250px; border: none; display: inline-flex; align-items: center; justify-content: center;">
+                        <button type="submit" class="tm-more-button btn" style="padding: 0.875rem 2rem; font-weight: 600; border: none; display: inline-flex; align-items: center; justify-content: center;">
                             <i class="bi bi-credit-card me-2"></i>Continuer
                         </button>
                     </div>
