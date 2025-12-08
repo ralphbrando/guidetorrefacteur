@@ -40,6 +40,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/payment/cancel', [PaymentController::class, 'cancel'])->name('payment.cancel');
     Route::post('/payment/stripe', [PaymentController::class, 'stripe'])->name('payment.stripe');
     Route::post('/payment/paypal', [PaymentController::class, 'paypal'])->name('payment.paypal');
+    Route::post('/payment/paypal/callback', [PaymentController::class, 'paypalCallback'])->name('payment.paypal.callback');
+});
+
+// Webhook Stripe (sans middleware auth car appelé par Stripe)
+Route::post('/payment/stripe/webhook', [PaymentController::class, 'stripeWebhook'])->name('payment.stripe.webhook');
 });
 
 // PDF routes (admin only - should add middleware)

@@ -13,6 +13,27 @@ return [
     'faker_locale' => 'fr_FR',
     'key' => env('APP_KEY'),
     'cipher' => 'AES-256-CBC',
+    
+    /*
+    |--------------------------------------------------------------------------
+    | Payment Configuration
+    |--------------------------------------------------------------------------
+    |
+    | Configuration des clés de paiement (Stripe et PayPal)
+    | Mettez vos clés de production ici
+    |
+    */
+    'stripe' => [
+        'key' => 'pk_live_YOUR_STRIPE_PUBLIC_KEY',
+        'secret' => 'sk_live_YOUR_STRIPE_SECRET_KEY',
+        'webhook_secret' => 'whsec_YOUR_STRIPE_WEBHOOK_SECRET',
+    ],
+    
+    'paypal' => [
+        'client_id' => 'YOUR_PAYPAL_CLIENT_ID',
+        'client_secret' => 'YOUR_PAYPAL_CLIENT_SECRET',
+        'mode' => 'live', // 'live' ou 'sandbox'
+    ],
     'maintenance' => [
         'driver' => 'file',
     ],

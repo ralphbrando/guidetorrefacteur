@@ -83,8 +83,8 @@
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <div class="card h-100" style="padding:20px;border: 2px solid #e0e0e0; border-radius: 16px; transition: all 0.3s ease; background: #fff;">
-                            <div class="card-body p-4 text-center" style="display: flex; flex-direction: column; justify-content: space-between; min-height: 200px;">
+                        <div class="card h-100" style="border: 2px solid #e0e0e0; border-radius: 16px; transition: all 0.3s ease; background: #fff;">
+                            <div class="card-body p-4 text-center" style="padding: 20px; display: flex; flex-direction: column; justify-content: space-between; min-height: 200px;">
                                 <div>
                                     <div style="width: 64px; height: 64px; border-radius: 50%; background: rgba(0, 112, 186, 0.15); display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">
                                         <i class="bi bi-paypal fs-2" style="color: #0070ba;"></i>

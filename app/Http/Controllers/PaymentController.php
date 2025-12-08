@@ -97,8 +97,6 @@ class PaymentController extends Controller
 
     public function paypal(Request $request)
     {
-        // PayPal integration would go here
-        // For now, redirect to success
         $request->validate([
             'paiement_id' => 'required|exists:paiements,id',
         ]);
@@ -109,8 +107,38 @@ class PaymentController extends Controller
             abort(403);
         }
 
-        // TODO: Implement PayPal payment processing
-        return redirect()->route('payment.success');
+        // Redirect to PayPal payment page
+        return view('payment.paypal', compact('paiement'));
+    }
+
+    public function paypalCallback(Request $request)
+    {
+        $request->validate([
+            'paiement_id' => 'required|exists:paiements,id',
+            'paymentId' => 'nullable|string',
+            'PayerID' => 'nullable|string',
+        ]);
+
+        $paiement = Paiement::findOrFail($request->paiement_id);
+        
+        if ($paiement->torrefacteur->user_id !== Auth::id()) {
+            abort(403);
+        }
+
+        // For now, mark as paid if paymentId and PayerID are provided
+        // In production, you would verify the payment with PayPal API
+        if ($request->has('paymentId') && $request->has('PayerID')) {
+            $paiement->update([
+                'statut' => 'paye',
+                'methode' => 'paypal',
+                'transaction_id' => $request->paymentId,
+                'date_paiement' => now(),
+            ]);
+
+            return redirect()->route('payment.success')->with('success', 'Paiement PayPal effectué avec succès.');
+        }
+
+        return redirect()->route('payment.process')->with('error', 'Erreur lors du paiement PayPal.');
     }
 
     public function success(Request $request)
@@ -120,15 +148,64 @@ class PaymentController extends Controller
             ->latest()
             ->first();
 
-        if ($paiement) {
-            $paiement->update([
-                'statut' => 'paye',
-                'methode' => 'carte',
-                'date_paiement' => now(),
-            ]);
+        if ($paiement && $request->has('payment_intent')) {
+            // Vérifier le paiement Stripe côté serveur
+            StripeClient::setApiKey(config('stripe.secret'));
+            
+            try {
+                $paymentIntent = PaymentIntent::retrieve($request->payment_intent);
+                
+                if ($paymentIntent->status === 'succeeded') {
+                    $paiement->update([
+                        'statut' => 'paye',
+                        'methode' => 'carte',
+                        'transaction_id' => $paymentIntent->id,
+                        'date_paiement' => now(),
+                    ]);
+                }
+            } catch (\Exception $e) {
+                \Log::error('Stripe payment verification error: ' . $e->getMessage());
+            }
         }
 
         return view('payment.success', compact('paiement'));
+    }
+
+    public function stripeWebhook(Request $request)
+    {
+        $payload = $request->getContent();
+        $sig_header = $request->header('Stripe-Signature');
+        $endpoint_secret = config('stripe.webhook_secret');
+
+        try {
+            $event = \Stripe\Webhook::constructEvent(
+                $payload, $sig_header, $endpoint_secret
+            );
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'Invalid signature'], 400);
+        }
+
+        // Handle the event
+        switch ($event->type) {
+            case 'payment_intent.succeeded':
+                $paymentIntent = $event->data->object;
+                $paiementId = $paymentIntent->metadata->paiement_id ?? null;
+                
+                if ($paiementId) {
+                    $paiement = Paiement::find($paiementId);
+                    if ($paiement && $paiement->statut === 'en_attente') {
+                        $paiement->update([
+                            'statut' => 'paye',
+                            'methode' => 'carte',
+                            'transaction_id' => $paymentIntent->id,
+                            'date_paiement' => now(),
+                        ]);
+                    }
+                }
+                break;
+        }
+
+        return response()->json(['received' => true]);
     }
 
     public function cancel()
