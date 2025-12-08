@@ -6,7 +6,6 @@ use App\Models\Torrefacteur;
 use App\Models\Region;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Barryvdh\DomPDF\Facade\Pdf;
 
 class PdfController extends Controller
 {
@@ -39,7 +38,7 @@ class PdfController extends Controller
             $query->where('valide', true)->orderBy('nom_brulerie');
         }])->orderBy('ordre')->get();
 
-        $pdf = Pdf::loadView('pdf.guide', compact('torrefacteurs', 'regions'));
+        $pdf = \PDF::loadView('pdf.guide', compact('torrefacteurs', 'regions'));
         
         if ($type === 'print') {
             // High resolution for printing
@@ -64,7 +63,7 @@ class PdfController extends Controller
             $query->where('valide', true)->orderBy('nom_brulerie');
         }])->orderBy('ordre')->get();
 
-        $pdf = Pdf::loadView('pdf.guide', compact('torrefacteurs', 'regions'));
+        $pdf = \PDF::loadView('pdf.guide', compact('torrefacteurs', 'regions'));
         $pdf->setPaper('a5', 'portrait');
         $pdf->setOption('dpi', 300);
         
