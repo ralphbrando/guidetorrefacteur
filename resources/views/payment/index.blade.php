@@ -54,7 +54,7 @@
                         @foreach($offres as $offre)
                             <div class="col-md-6" style="margin-top: 1.5rem;">
                                 <div class="offer-card card h-100 position-relative {{ old('offre_partenaire_id', $torrefacteur->offre_partenaire_id ?? '') == $offre->id ? 'selected' : '' }}" 
-                                     style="cursor: pointer; border: 2px solid #e0e0e0; border-radius: 16px; overflow: hidden; transition: all 0.3s ease; background: #fff; min-height: 320px; display: flex; flex-direction: column;"
+                                     style="cursor: pointer; border: 2px solid #e0e0e0; border-radius: 16px; overflow: hidden; transition: all 0.3s ease; background: #fff; min-height: 185px; display: flex; flex-direction: column;"
                                      onclick="document.getElementById('offre_{{ $offre->id }}').checked = true; document.getElementById('offre_{{ $offre->id }}').dispatchEvent(new Event('change'));">
                                     @if($offre->code === 'G')
                                         <div class="position-absolute top-0 end-0 m-3" style="z-index: 10;">
@@ -155,7 +155,7 @@
                             <i class="bi bi-arrow-left me-2"></i>Retour
                         </a>
                         <button type="submit" class="tm-more-button btn" style="padding: 0.875rem 2rem; font-weight: 600; min-width: 250px; border: none; display: inline-flex; align-items: center; justify-content: center;">
-                            <i class="bi bi-credit-card me-2"></i>Continuer vers le paiement
+                            <i class="bi bi-credit-card me-2"></i>Continuer
                         </button>
                     </div>
                 </form>
