@@ -528,6 +528,9 @@ ol li:before {
 .tm-hr-container {
   height: 41px;
 }
+.gold-text{
+  display:inline;
+}
 .card{
   margin-top: 5px;
 }
