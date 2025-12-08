@@ -528,6 +528,9 @@ ol li:before {
 .tm-hr-container {
   height: 41px;
 }
+.card{
+  margin-top: 5px;
+}
 .tm-hr { border-color: #c79c60; }
 .tm-daily-menu-container { overflow: hidden; }
 
