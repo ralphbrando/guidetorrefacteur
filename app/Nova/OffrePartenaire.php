@@ -29,6 +29,23 @@ class OffrePartenaire extends Resource
         return [
             ID::make()->sortable(),
 
+            Text::make('Code')
+                ->sortable()
+                ->rules('required', 'max:255')
+                ->help('G, P1, P2, etc.'),
+
+            Text::make('Nom')
+                ->sortable()
+                ->rules('required', 'max:255'),
+
+            Textarea::make('Description')
+                ->nullable(),
+
+            Number::make('Prix')
+                ->sortable()
+                ->step(0.01)
+                ->rules('required', 'numeric', 'min:0'),
+
         ];
     }
 
