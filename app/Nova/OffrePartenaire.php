@@ -41,11 +41,27 @@ class OffrePartenaire extends Resource
             Textarea::make('Description')
                 ->nullable(),
 
-            Number::make('Prix')
-                ->sortable()
-                ->step(0.01)
-                ->rules('required', 'numeric', 'min:0'),
 
+
+            Number::make('Nombre de Guides', 'nombre_guides')
+                ->rules('required', 'integer', 'min:0')
+                ->default(0),
+
+            Number::make('Limite')
+                ->help('null = illimité')
+                ->rules('nullable', 'integer', 'min:0')
+                ->nullable(),
+
+            Number::make('Réservé', 'reserve')
+                ->rules('required', 'integer', 'min:0')
+                ->default(0),
+
+            Boolean::make('Actif')
+                ->default(true),
+
+            Number::make('Ordre')
+                ->sortable()
+                ->default(0),
         ];
     }
 
