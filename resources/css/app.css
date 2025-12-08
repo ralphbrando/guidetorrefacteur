@@ -903,3 +903,59 @@ body {
     outline-offset: 2px;
     border-radius: 4px;
 }
+
+/* Styles pour les cartes d'offres de paiement */
+.offer-card {
+    position: relative;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.offer-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--gold), var(--gold-light));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.offer-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 40px rgba(199, 156, 96, 0.2);
+    border-color: var(--gold) !important;
+}
+
+.offer-card:hover::before {
+    opacity: 1;
+}
+
+.offer-card.selected {
+    border-color: var(--gold) !important;
+    box-shadow: 0 8px 30px rgba(199, 156, 96, 0.3);
+    background: linear-gradient(135deg, rgba(199, 156, 96, 0.03), rgba(255, 255, 255, 1)) !important;
+}
+
+.offer-card.selected::before {
+    opacity: 1;
+}
+
+.offer-card .form-check-input:checked {
+    background-color: var(--gold);
+    border-color: var(--gold);
+    box-shadow: 0 0 0 0.2rem rgba(199, 156, 96, 0.25);
+}
+
+.offer-card .form-check-input {
+    width: 1.25rem;
+    height: 1.25rem;
+    border: 2px solid #ddd;
+    transition: all 0.3s ease;
+}
+
+.offer-card .form-check-input:hover {
+    border-color: var(--gold);
+    transform: scale(1.1);
+}
