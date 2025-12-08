@@ -121,7 +121,7 @@
             </div>
             <br>
             <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-5 pt-4" style="border-top: 2px solid #c79c60;">
-                <a href="{{ route('torrefacteur.form') }}" class="tm-more-button">
+                <a href="{{ route('torrefacteur.form') }}" class="tm-more-button" style="margin-top: 10px;">
                     <i class="bi bi-pencil me-2"></i>Modifier
                 </a>
             </div>

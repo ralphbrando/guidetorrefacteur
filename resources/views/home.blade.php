@@ -21,7 +21,7 @@
                 Rejoignez notre communauté de torréfacteurs passionnés et faites découvrir votre brûlerie. 
                 Connectez-vous ou inscrivez-vous pour remplir vos informations et apparaître dans notre guide annuel.
             </p>
-            <div class="alert alert-warning mt-4 fade-in-up" style="animation-delay: 0.3s;">
+            <div class="alert alert-warning mt-4 fade-in-up" style="animation-delay: 0.3s; color:white;">
                 <strong>⚠️ Informations à remplir AVANT le 21 Décembre 2025</strong>
             </div>
             <div class="d-flex flex-wrap justify-content-center gap-3 mt-4 fade-in-up" style="animation-delay: 0.4s;">
