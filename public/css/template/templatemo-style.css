@@ -530,6 +530,7 @@ ol li:before {
 }
 .gold-text{
   display:inline;
+  margin:10px;
 }
 .card{
   margin-top: 5px;
