@@ -6,7 +6,7 @@
 <section class="tm-section row">
     <div class="col-lg-12 tm-section-header-container">
         <h2 class="tm-section-header gold-text tm-handwriting-font">
-            <img src="{{ asset('img/template/logo.png') }}" alt="Logo" class="tm-site-logo"> Connexion
+            <img src="/img/template/logo.png" alt="Logo" class="tm-site-logo"> Connexion
         </h2>
         <div class="tm-hr-container"><hr class="tm-hr"></div>
     </div>

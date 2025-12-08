@@ -6,14 +6,14 @@
 <section class="tm-welcome-section">
     <div class="container tm-position-relative">
         <div class="tm-lights-container">
-            <img src="{{ asset('img/template/light.png') }}" alt="Light" class="light light-1">
-            <img src="{{ asset('img/template/light.png') }}" alt="Light" class="light light-2">
-            <img src="{{ asset('img/template/light.png') }}" alt="Light" class="light light-3">  
+            <img src="/img/template/light.png" alt="Light" class="light light-1">
+            <img src="/img/template/light.png" alt="Light" class="light light-2">
+            <img src="/img/template/light.png" alt="Light" class="light light-3">  
         </div>        
         <div class="row tm-welcome-content">
             <h2 class="white-text tm-handwriting-font tm-welcome-header">
-                <img src="{{ asset('img/template/header-line.png') }}" alt="Line" class="tm-header-line">&nbsp;Bienvenue au&nbsp;&nbsp;
-                <img src="{{ asset('img/template/header-line.png') }}" alt="Line" class="tm-header-line">
+                <img src="/img/template/header-line.png" alt="Line" class="tm-header-line">&nbsp;Bienvenue au&nbsp;&nbsp;
+                <img src="/img/template/header-line.png" alt="Line" class="tm-header-line">
             </h2>
             <h2 class="gold-text tm-welcome-header-2">Guide 2026 des Torréfacteurs</h2>
             <p class="gray-text tm-welcome-description">
@@ -33,7 +33,7 @@
                 @endauth
             </div>
         </div>
-        <img src="{{ asset('img/template/table-set.png') }}" alt="Table Set" class="tm-table-set img-responsive">             
+        <img src="/img/template/table-set.png" alt="Table Set" class="tm-table-set img-responsive">             
     </div>      
 </section>
 
@@ -52,7 +52,7 @@
             </div>
             <div class="col-lg-3 col-md-3 col-sm-4 tm-welcome-img-container">
                 <div class="inline-block shadow-img">
-                    <img src="{{ asset('img/template/1.jpg') }}" alt="Image" class="img-circle img-thumbnail">  
+                    <img src="/img/template/1.jpg" alt="Image" class="img-circle img-thumbnail">  
                 </div>              
             </div>            
         </section>          
@@ -60,13 +60,13 @@
         <section class="tm-section tm-section-margin-bottom-0 row" id="features">
             <div class="col-lg-12 tm-section-header-container">
                 <h2 class="tm-section-header gold-text tm-handwriting-font">
-                    <img src="{{ asset('img/template/logo.png') }}" alt="Logo" class="tm-site-logo"> Pourquoi Nous Rejoindre
+                    <img src="/img/template/logo.png" alt="Logo" class="tm-site-logo"> Pourquoi Nous Rejoindre
                 </h2>
                 <div class="tm-hr-container"><hr class="tm-hr"></div>
             </div>
             <div class="col-lg-12 tm-popular-items-container">
                 <div class="tm-popular-item">
-                    <img src="{{ asset('img/template/popular-1.jpg') }}" alt="Popular" class="tm-popular-item-img">
+                    <img src="/img/template/popular-1.jpg" alt="Popular" class="tm-popular-item-img">
                     <div class="tm-popular-item-description">
                         <h3 class="tm-handwriting-font tm-popular-item-title">
                             <span class="tm-handwriting-font bigger-first-letter">V</span>isibilité
@@ -79,7 +79,7 @@
                     </div>              
                 </div>
                 <div class="tm-popular-item">
-                    <img src="{{ asset('img/template/popular-2.jpg') }}" alt="Popular" class="tm-popular-item-img">
+                    <img src="/img/template/popular-2.jpg" alt="Popular" class="tm-popular-item-img">
                     <div class="tm-popular-item-description">
                         <h3 class="tm-handwriting-font tm-popular-item-title">
                             <span class="tm-handwriting-font bigger-first-letter">C</span>ommunauté
@@ -92,7 +92,7 @@
                     </div>              
                 </div>
                 <div class="tm-popular-item">
-                    <img src="{{ asset('img/template/popular-3.jpg') }}" alt="Popular" class="tm-popular-item-img">
+                    <img src="/img/template/popular-3.jpg" alt="Popular" class="tm-popular-item-img">
                     <div class="tm-popular-item-description">
                         <h3 class="tm-handwriting-font tm-popular-item-title">
                             <span class="tm-handwriting-font bigger-first-letter">P</span>romotion
@@ -110,7 +110,7 @@
         <section class="tm-section row">
             <div class="col-lg-12 tm-section-header-container">
                 <h2 class="tm-section-header gold-text tm-handwriting-font">
-                    <img src="{{ asset('img/template/logo.png') }}" alt="Logo" class="tm-site-logo"> Comment ça Marche
+                    <img src="/img/template/logo.png" alt="Logo" class="tm-site-logo"> Comment ça Marche
                 </h2>
                 <div class="tm-hr-container"><hr class="tm-hr"></div>
             </div>          
@@ -118,7 +118,7 @@
                 <div class="tm-special-container-left">
                     <div class="tm-special-item">
                         <div class="tm-special-img-container">
-                            <img src="{{ asset('img/template/special-1.jpg') }}" alt="Special" class="tm-special-img img-responsive">  
+                            <img src="/img/template/special-1.jpg" alt="Special" class="tm-special-img img-responsive">  
                             <a href="{{ route('register') }}">
                                 <div class="tm-special-description">
                                     <h3 class="tm-special-title">1. Inscription</h3>
@@ -132,7 +132,7 @@
                     <div>
                         <div class="tm-special-item">
                             <div class="tm-special-img-container">
-                                <img src="{{ asset('img/template/special-2.jpg') }}" alt="Special" class="img-responsive">  
+                                <img src="/img/template/special-2.jpg" alt="Special" class="img-responsive">  
                                 <a href="{{ route('torrefacteur.form') }}">
                                     <div class="tm-special-description">
                                         <h3 class="tm-special-title">2. Remplissez vos informations</h3>
@@ -145,7 +145,7 @@
                     <div class="tm-special-container-lower">
                         <div class="tm-special-item">
                             <div class="tm-special-img-container">
-                                <img src="{{ asset('img/template/special-3.jpg') }}" alt="Special" class="img-responsive">  
+                                <img src="/img/template/special-3.jpg" alt="Special" class="img-responsive">  
                                 <a href="{{ route('payment.index') }}">
                                     <div class="tm-special-description">
                                         <p>3. Choisissez votre offre</p>
@@ -155,7 +155,7 @@
                         </div>
                         <div class="tm-special-item">
                             <div class="tm-special-img-container">
-                                <img src="{{ asset('img/template/special-4.jpg') }}" alt="Special" class="img-responsive">  
+                                <img src="/img/template/special-4.jpg" alt="Special" class="img-responsive">  
                                 <a href="#">
                                     <div class="tm-special-description">
                                         <p>4. Apparaissez dans le guide</p>

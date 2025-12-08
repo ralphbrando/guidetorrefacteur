@@ -36,7 +36,7 @@
                 <div class="tm-top-header-inner">
                     <div class="tm-logo-container">
                         <a href="{{ route('home') }}" class="d-flex align-items-center text-decoration-none">
-                            <img src="{{ asset('img/template/logo.png') }}" alt="Logo" class="tm-site-logo">
+                            <img src="/img/template/logo.png" alt="Logo" class="tm-site-logo">
                             <h1 class="tm-site-name tm-handwriting-font">Guide 2026</h1>
                         </a>
                     </div>
