@@ -4,3 +4,4 @@
     v{{ \Laravel\Nova\Nova::version() }}
 </p>
 
+
