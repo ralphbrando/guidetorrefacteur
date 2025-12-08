@@ -45,7 +45,6 @@ Route::middleware('auth')->group(function () {
 
 // Webhook Stripe (sans middleware auth car appelé par Stripe)
 Route::post('/payment/stripe/webhook', [PaymentController::class, 'stripeWebhook'])->name('payment.stripe.webhook');
-});
 
 // PDF routes (admin only - should add middleware)
 Route::get('/pdf/preview', [App\Http\Controllers\PdfController::class, 'preview'])->name('pdf.preview');
