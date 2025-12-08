@@ -74,8 +74,8 @@
 </section>
 
 @push('scripts')
-@if(config('paypal.client_id') && config('paypal.client_id') !== 'YOUR_CLIENT_ID')
-<script src="https://www.paypal.com/sdk/js?client-id={{ config('paypal.client_id') }}&currency=EUR"></script>
+@if(config('paypal.client_id') && config('paypal.client_id') !== 'YOUR_PAYPAL_CLIENT_ID')
+<script src="https://www.paypal.com/sdk/js?client-id={{ config('paypal.client_id') }}&currency=EUR&intent=capture"></script>
 <script>
     paypal.Buttons({
         createOrder: function(data, actions) {

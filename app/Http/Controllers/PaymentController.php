@@ -117,8 +117,8 @@ class PaymentController extends Controller
     {
         $request->validate([
             'paiement_id' => 'required|exists:paiements,id',
-            'paymentId' => 'nullable|string',
-            'PayerID' => 'nullable|string',
+            'paymentId' => 'required|string',
+            'PayerID' => 'required|string',
         ]);
 
         $paiement = Paiement::findOrFail($request->paiement_id);
@@ -127,20 +127,71 @@ class PaymentController extends Controller
             abort(403);
         }
 
-        // For now, mark as paid if paymentId and PayerID are provided
-        // In production, you would verify the payment with PayPal API
-        if ($request->has('paymentId') && $request->has('PayerID')) {
-            $paiement->update([
-                'statut' => 'paye',
-                'methode' => 'paypal',
-                'transaction_id' => $request->paymentId,
-                'date_paiement' => now(),
+        // Vérifier le paiement PayPal avec l'API PayPal
+        try {
+            $clientId = config('paypal.client_id');
+            $clientSecret = config('paypal.client_secret');
+            $mode = config('paypal.mode', 'live');
+            
+            $baseUrl = $mode === 'live' 
+                ? 'https://api-m.paypal.com' 
+                : 'https://api-m.sandbox.paypal.com';
+            
+            // Obtenir un token d'accès
+            $tokenResponse = \Illuminate\Support\Facades\Http::asForm()
+                ->withBasicAuth($clientId, $clientSecret)
+                ->post($baseUrl . '/v1/oauth2/token', [
+                    'grant_type' => 'client_credentials',
+                ]);
+            
+            if (!$tokenResponse->successful()) {
+                throw new \Exception('Erreur lors de l\'authentification PayPal');
+            }
+            
+            $accessToken = $tokenResponse->json()['access_token'];
+            
+            // Vérifier l'ordre PayPal
+            $orderResponse = \Illuminate\Support\Facades\Http::withToken($accessToken)
+                ->get($baseUrl . '/v2/checkout/orders/' . $request->paymentId);
+            
+            if (!$orderResponse->successful()) {
+                throw new \Exception('Erreur lors de la vérification de la commande PayPal');
+            }
+            
+            $order = $orderResponse->json();
+            
+            // Vérifier que le statut est COMPLETED et que le montant correspond
+            if ($order['status'] === 'COMPLETED') {
+                $amount = $order['purchase_units'][0]['amount']['value'];
+                
+                if ((float)$amount === (float)$paiement->montant) {
+                    $paiement->update([
+                        'statut' => 'paye',
+                        'methode' => 'paypal',
+                        'transaction_id' => $request->paymentId,
+                        'date_paiement' => now(),
+                    ]);
+
+                    return redirect()->route('payment.success')->with('success', 'Paiement PayPal effectué avec succès.');
+                } else {
+                    Log::error('PayPal payment amount mismatch', [
+                        'expected' => $paiement->montant,
+                        'received' => $amount,
+                        'order_id' => $request->paymentId,
+                    ]);
+                    return redirect()->route('payment.process')->with('error', 'Erreur : le montant du paiement ne correspond pas.');
+                }
+            } else {
+                return redirect()->route('payment.process')->with('error', 'Le paiement PayPal n\'a pas été complété.');
+            }
+        } catch (\Exception $e) {
+            Log::error('PayPal payment verification error: ' . $e->getMessage(), [
+                'paiement_id' => $paiement->id,
+                'paymentId' => $request->paymentId,
             ]);
-
-            return redirect()->route('payment.success')->with('success', 'Paiement PayPal effectué avec succès.');
+            
+            return redirect()->route('payment.process')->with('error', 'Erreur lors de la vérification du paiement PayPal : ' . $e->getMessage());
         }
-
-        return redirect()->route('payment.process')->with('error', 'Erreur lors du paiement PayPal.');
     }
 
     public function success(Request $request)
