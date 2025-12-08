@@ -52,7 +52,7 @@
 
                     <div class="row g-4" style="margin-bottom: 2rem;">
                         @foreach($offres as $offre)
-                            <div class="col-md-6">
+                            <div class="col-md-6" style="margin-top: 1.5rem;">
                                 <div class="offer-card card h-100 position-relative {{ old('offre_partenaire_id', $torrefacteur->offre_partenaire_id ?? '') == $offre->id ? 'selected' : '' }}" 
                                      style="cursor: pointer; border: 2px solid #e0e0e0; border-radius: 16px; overflow: hidden; transition: all 0.3s ease; background: #fff;"
                                      onclick="document.getElementById('offre_{{ $offre->id }}').checked = true; document.getElementById('offre_{{ $offre->id }}').dispatchEvent(new Event('change'));">
@@ -151,7 +151,7 @@
                     </div>
 
                     <div class="d-grid gap-3 d-md-flex justify-content-md-end mt-5 pt-5" style="border-top: 2px solid #c79c60; margin-top: 3rem !important; padding-top: 2rem !important;">
-                        <a href="{{ route('torrefacteur.form') }}" class="tm-more-button btn" style="background: #f5f5f5; color: #333; border: 2px solid #ddd; padding: 0.875rem 2rem; font-weight: 600; min-width: 150px; text-align: center; text-decoration: none; display: inline-flex; align-items: center; justify-content: center;">
+                        <a href="{{ route('torrefacteur.form') }}" class="tm-more-button btn" style="background: #f5f5f5; color: #333; border: 2px solid #ddd; padding: 0.875rem 2rem; font-weight: 600; min-width: 150px; text-align: center; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; margin-right: 1rem;">
                             <i class="bi bi-arrow-left me-2"></i>Retour
                         </a>
                         <button type="submit" class="tm-more-button btn" style="padding: 0.875rem 2rem; font-weight: 600; min-width: 250px; border: none; display: inline-flex; align-items: center; justify-content: center;">
