@@ -16,8 +16,8 @@
                 <img src="/img/template/header-line.png" alt="Line" class="tm-header-line">
             </h2>
             <h2 class="gold-text tm-welcome-header-2 fade-in-down">Guide 2026 des Torréfacteurs</h2>
-            <p class="gray-text tm-welcome-description fade-in-up">
-                Bienvenue sur la plateforme du <span class="gold-text">Guide 2026 des Torréfacteurs</span>. 
+            <p class="gray-text tm-welcome-description fade-in-up" style="font-size: 1.15rem; line-height: 1.8; font-weight: 400;">
+                Bienvenue sur la plateforme du <span class="gold-text" style="font-weight: 600;">Guide 2026 des Torréfacteurs</span>. 
                 Rejoignez notre communauté de torréfacteurs passionnés et faites découvrir votre brûlerie. 
                 Connectez-vous ou inscrivez-vous pour remplir vos informations et apparaître dans notre guide annuel.
             </p>
@@ -42,9 +42,9 @@
         <section class="tm-section row fade-in-up">
             <div class="col-lg-9 col-md-9 col-sm-8">
                 <h2 class="tm-section-header gold-text tm-handwriting-font">Le Meilleur Café pour Vous</h2>
-                <h2>Guide 2026 des Torréfacteurs</h2>
-                <p class="tm-welcome-description">
-                    Le <span class="blue-text">Guide</span><span class="green-text">2026</span> des Torréfacteurs est votre référence pour découvrir les meilleures brûleries de France. 
+                <h2 class="gold-text" style="font-weight: 700; margin-bottom: 1.5rem;">Guide 2026 des Torréfacteurs</h2>
+                <p class="tm-welcome-description" style="font-size: 1.1rem; line-height: 1.8; color: #333; font-weight: 400;">
+                    Le <span class="gold-text" style="font-weight: 600;">Guide 2026</span> des Torréfacteurs est votre référence pour découvrir les meilleures brûleries de France. 
                     Rejoignez notre communauté et faites connaître votre passion pour le café. 
                     Inscrivez-vous dès maintenant pour apparaître dans notre guide annuel et toucher un public de passionnés de café.
                 </p>

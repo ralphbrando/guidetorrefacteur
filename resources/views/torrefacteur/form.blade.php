@@ -5,8 +5,9 @@
 @section('content')
 <section class="tm-section row">
     <div class="col-lg-12 tm-section-header-container">
-        <h2 class="tm-section-header gold-text tm-handwriting-font">
-            <img src="/img/template/logo.png" alt="Logo" class="tm-site-logo"> Formulaire Torréfacteur
+        <h2 class="tm-section-header gold-text tm-handwriting-font" style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: nowrap; white-space: nowrap;">
+            <img src="/img/template/logo.png" alt="Logo" class="tm-site-logo" style="flex-shrink: 0;"> 
+            <span>Formulaire Torréfacteur</span>
         </h2>
         <div class="tm-hr-container"><hr class="tm-hr"></div>
     </div>
@@ -18,12 +19,12 @@
                 <form method="POST" action="{{ route('torrefacteur.save') }}" enctype="multipart/form-data">
                     @csrf
 
-                    <div class="d-flex align-items-center gap-2 mb-4 pb-3" style="border-bottom: 2px solid #c79c60;">
+                    <div class="d-flex align-items-center gap-2 mb-5 pb-3" style="border-bottom: 2px solid #c79c60;">
                         <i class="bi bi-info-circle gold-text" style="font-size: 1.5rem;"></i>
                         <h5 class="mb-0 gold-text">Informations générales</h5>
                     </div>
                     
-                    <div class="row mb-4">
+                    <div class="row mb-5">
                         <div class="col-md-6">
                             <label for="nom_brulerie" class="form-label gold-text" style="font-weight: 600; margin-bottom: 0.75rem; display: block;">
                                 Nom de la Brulerie <span class="text-danger">*</span>
@@ -84,19 +85,29 @@
                             <label for="logo" class="form-label gold-text" style="font-weight: 600; margin-bottom: 0.75rem; display: block;">
                                 Logo
                             </label>
-                            <input type="file" class="form-control form-control-lg @error('logo') is-invalid @enderror" 
-                                   id="logo" name="logo" accept="image/*"
-                                   style="padding: 0.5rem 1.25rem;">
+                            <div class="file-input-wrapper">
+                                <div class="file-input-custom" id="logo-custom">
+                                    <span class="file-input-button">
+                                        <i class="bi bi-cloud-upload me-1"></i>Choisir un fichier
+                                    </span>
+                                    <span class="file-input-text" id="logo-text">Aucun fichier choisi</span>
+                                </div>
+                                <input type="file" class="form-control form-control-lg @error('logo') is-invalid @enderror" 
+                                       id="logo" name="logo" accept="image/*">
+                            </div>
                             @error('logo')
                                 <div class="invalid-feedback" style="margin-top: 0.5rem;">{{ $message }}</div>
                             @enderror
                             @if($torrefacteur && $torrefacteur->logo)
-                                <small class="text-muted d-block mt-2">Logo actuel: <a href="{{ asset('storage/' . $torrefacteur->logo) }}" target="_blank" class="gold-text">Voir</a></small>
+                                <small class="text-muted d-block mt-2">
+                                    <i class="bi bi-check-circle me-1"></i>Logo actuel: 
+                                    <a href="{{ asset('storage/' . $torrefacteur->logo) }}" target="_blank" class="gold-text">Voir</a>
+                                </small>
                             @endif
                         </div>
                     </div>
 
-                    <div class="mb-4">
+                    <div class="mb-5">
                         <label for="texte_descriptif" class="form-label gold-text" style="font-weight: 600; margin-bottom: 0.75rem; display: block;">
                             Texte descriptif
                         </label>
@@ -108,15 +119,15 @@
                         @enderror
                     </div>
 
-                    <div class="d-flex align-items-center gap-2 mb-4 mt-5 pb-3" style="border-bottom: 2px solid #c79c60;">
+                    <div class="d-flex align-items-center gap-2 mb-5 mt-5 pb-3" style="border-bottom: 2px solid #c79c60;">
                         <i class="bi bi-telephone gold-text" style="font-size: 1.5rem;"></i>
                         <h5 class="mb-0 gold-text">Informations de contact</h5>
                     </div>
 
-                    <div class="row mb-4">
-                        <div class="col-md-6">
+                    <div class="row mb-5">
+                        <div class="col-md-3">
                             <label for="prenom_nom_representant" class="form-label gold-text" style="font-weight: 600; margin-bottom: 0.75rem; display: block;">
-                                Prénom NOM du représentant légal <span class="text-danger">*</span>
+                                Prénom NOM représentant <span class="text-danger">*</span>
                             </label>
                             <input type="text" class="form-control form-control-lg @error('prenom_nom_representant') is-invalid @enderror" 
                                    id="prenom_nom_representant" name="prenom_nom_representant" 
@@ -127,7 +138,7 @@
                                 <div class="invalid-feedback" style="margin-top: 0.5rem;">{{ $message }}</div>
                             @enderror
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-3">
                             <label for="telephone" class="form-label gold-text" style="font-weight: 600; margin-bottom: 0.75rem; display: block;">
                                 Téléphone <span class="text-danger">*</span>
                             </label>
@@ -140,10 +151,7 @@
                                 <div class="invalid-feedback" style="margin-top: 0.5rem;">{{ $message }}</div>
                             @enderror
                         </div>
-                    </div>
-
-                    <div class="row mb-4">
-                        <div class="col-md-6">
+                        <div class="col-md-3">
                             <label for="email" class="form-label gold-text" style="font-weight: 600; margin-bottom: 0.75rem; display: block;">
                                 Email <span class="text-danger">*</span>
                             </label>
@@ -156,7 +164,7 @@
                                 <div class="invalid-feedback" style="margin-top: 0.5rem;">{{ $message }}</div>
                             @enderror
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-3">
                             <label for="site_internet" class="form-label gold-text" style="font-weight: 600; margin-bottom: 0.75rem; display: block;">
                                 Site Internet
                             </label>
@@ -186,14 +194,24 @@
                         <label for="photo" class="form-label gold-text" style="font-weight: 600; margin-bottom: 0.75rem; display: block;">
                             Photo (dimensions fixes)
                         </label>
-                        <input type="file" class="form-control form-control-lg @error('photo') is-invalid @enderror" 
-                               id="photo" name="photo" accept="image/*"
-                               style="padding: 0.5rem 1.25rem;">
+                        <div class="file-input-wrapper">
+                            <div class="file-input-custom" id="photo-custom">
+                                <span class="file-input-button">
+                                    <i class="bi bi-cloud-upload me-1"></i>Choisir un fichier
+                                </span>
+                                <span class="file-input-text" id="photo-text">Aucun fichier choisi</span>
+                            </div>
+                            <input type="file" class="form-control form-control-lg @error('photo') is-invalid @enderror" 
+                                   id="photo" name="photo" accept="image/*">
+                        </div>
                         @error('photo')
                             <div class="invalid-feedback" style="margin-top: 0.5rem;">{{ $message }}</div>
                         @enderror
                         @if($torrefacteur && $torrefacteur->photo)
-                            <small class="text-muted d-block mt-2">Photo actuelle: <a href="{{ asset('storage/' . $torrefacteur->photo) }}" target="_blank" class="gold-text">Voir</a></small>
+                            <small class="text-muted d-block mt-2">
+                                <i class="bi bi-check-circle me-1"></i>Photo actuelle: 
+                                <a href="{{ asset('storage/' . $torrefacteur->photo) }}" target="_blank" class="gold-text">Voir</a>
+                            </small>
                         @endif
                     </div>
 
@@ -461,6 +479,19 @@ document.getElementById('region_id').addEventListener('change', function() {
     } else {
         departementSelect.innerHTML = '<option value="">Sélectionner un département</option>';
     }
+});
+
+// File input custom styling
+document.getElementById('logo').addEventListener('change', function(e) {
+    const fileName = e.target.files[0] ? e.target.files[0].name : 'Aucun fichier choisi';
+    document.getElementById('logo-text').textContent = fileName;
+    document.getElementById('logo-custom').classList.toggle('has-file', e.target.files[0]);
+});
+
+document.getElementById('photo').addEventListener('change', function(e) {
+    const fileName = e.target.files[0] ? e.target.files[0].name : 'Aucun fichier choisi';
+    document.getElementById('photo-text').textContent = fileName;
+    document.getElementById('photo-custom').classList.toggle('has-file', e.target.files[0]);
 });
 </script>
 @endpush

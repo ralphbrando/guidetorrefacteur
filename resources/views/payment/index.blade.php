@@ -65,14 +65,14 @@
                                                    required
                                                    onchange="document.querySelectorAll('.offer-card').forEach(c => c.classList.remove('selected')); this.closest('.card').classList.add('selected');">
                                             <label class="form-check-label w-100" for="offre_{{ $offre->id }}" style="cursor: pointer;">
-                                                <h6 class="mb-3" style="color: var(--coffee-accent); font-weight: 700;">
+                                                <h6 class="mb-3 gold-text" style="font-weight: 700;">
                                                     {{ $offre->nom }}
                                                 </h6>
                                                 <p class="mb-3 text-muted">{{ $offre->description }}</p>
                                                 <div class="d-flex align-items-baseline gap-2 mb-2">
-                                                    <span class="fs-3 fw-bold" style="color: var(--coffee-accent);">
+                                                    <span class="fs-3 fw-bold gold-text">
                                                         @php
-                                                            $prix = (float)($offre->prix ?? 0);
+                                                            $prix = is_numeric($offre->prix) ? (float)$offre->prix : 0;
                                                             echo number_format($prix, 2, ',', ' ') . ' €';
                                                         @endphp
                                                     </span>
@@ -82,13 +82,14 @@
                                                         </span>
                                                     @endif
                                                 </div>
-                                                @if(isset($offre->limite) && $offre->limite)
+                                                @if(isset($offre->limite) && $offre->limite !== null)
                                                     <small class="text-muted d-block mb-2">
                                                         <i class="bi bi-people me-1"></i>
                                                         @php
-                                                            $limite = (int)($offre->limite ?? 0);
-                                                            $reserve = (int)($offre->reserve ?? 0);
-                                                            echo ($limite - $reserve) . ' places disponibles sur ' . $limite;
+                                                            $limite = is_numeric($offre->limite) ? (int)$offre->limite : 0;
+                                                            $reserve = is_numeric($offre->reserve) ? (int)$offre->reserve : 0;
+                                                            $disponibles = max(0, $limite - $reserve);
+                                                            echo $disponibles . ' places disponibles sur ' . $limite;
                                                         @endphp
                                                     </small>
                                                 @endif
