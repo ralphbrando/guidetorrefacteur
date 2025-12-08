@@ -27,6 +27,29 @@ class PaymentController extends Controller
         return view('payment.index', compact('torrefacteur', 'offres'));
     }
 
+    public function showProcess(Request $request)
+    {
+        $torrefacteur = Auth::user()->torrefacteur;
+        
+        if (!$torrefacteur) {
+            return redirect()->route('torrefacteur.form')->with('error', 'Veuillez d\'abord remplir vos informations.');
+        }
+
+        // Récupérer le dernier paiement en attente
+        $paiement = Paiement::where('torrefacteur_id', $torrefacteur->id)
+            ->where('statut', 'en_attente')
+            ->latest()
+            ->first();
+
+        if (!$paiement) {
+            return redirect()->route('payment.index')->with('error', 'Aucun paiement en attente.');
+        }
+
+        $offre = $paiement->offrePartenaire;
+
+        return view('payment.process', compact('paiement', 'offre'));
+    }
+
     public function process(Request $request)
     {
         $request->validate([
@@ -58,7 +81,7 @@ class PaymentController extends Controller
         // Reserve the offer
         $offre->increment('reserve');
 
-        return view('payment.process', compact('paiement', 'offre'));
+        return redirect()->route('payment.process')->with('paiement_id', $paiement->id);
     }
 
     public function stripe(Request $request)

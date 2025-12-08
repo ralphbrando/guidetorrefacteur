@@ -28,7 +28,7 @@
                     </div>
                 </div>
 
-                <form method="POST" action="{{ route('payment.process') }}">
+                <form method="POST" action="{{ route('payment.process.submit') }}">
                     @csrf
 
                     <div class="mb-5" style="margin-bottom: 2.5rem !important;">

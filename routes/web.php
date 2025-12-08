@@ -35,7 +35,8 @@ Route::middleware('auth')->group(function () {
     
     // Payment routes
     Route::get('/payment', [PaymentController::class, 'index'])->name('payment.index');
-    Route::post('/payment/process', [PaymentController::class, 'process'])->name('payment.process');
+    Route::get('/payment/process', [PaymentController::class, 'showProcess'])->name('payment.process');
+    Route::post('/payment/process', [PaymentController::class, 'process'])->name('payment.process.submit');
     Route::get('/payment/success', [PaymentController::class, 'success'])->name('payment.success');
     Route::get('/payment/cancel', [PaymentController::class, 'cancel'])->name('payment.cancel');
     Route::post('/payment/stripe', [PaymentController::class, 'stripe'])->name('payment.stripe');
