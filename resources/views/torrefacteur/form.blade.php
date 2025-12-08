@@ -19,9 +19,9 @@
                 <form method="POST" action="{{ route('torrefacteur.save') }}" enctype="multipart/form-data">
                     @csrf
 
-                    <div class="d-flex align-items-center gap-2 mb-5 pb-3" style="border-bottom: 2px solid #c79c60;">
+                    <div class="d-flex align-items-center gap-2 mb-5 pb-3" style="border-bottom: 2px solid #c79c60; white-space: nowrap;">
                         <i class="bi bi-info-circle gold-text" style="font-size: 1.5rem;"></i>
-                        <h5 class="mb-0 gold-text">Informations générales</h5>
+                        <h5 class="mb-0 gold-text" style="white-space: nowrap;">Informations générales</h5>
                     </div>
                     
                     <div class="row mb-5">
@@ -85,16 +85,8 @@
                             <label for="logo" class="form-label gold-text" style="font-weight: 600; margin-bottom: 0.75rem; display: block;">
                                 Logo
                             </label>
-                            <div class="file-input-wrapper">
-                                <div class="file-input-custom" id="logo-custom">
-                                    <span class="file-input-button">
-                                        <i class="bi bi-cloud-upload me-1"></i>Choisir un fichier
-                                    </span>
-                                    <span class="file-input-text" id="logo-text">Aucun fichier choisi</span>
-                                </div>
-                                <input type="file" class="form-control form-control-lg @error('logo') is-invalid @enderror" 
-                                       id="logo" name="logo" accept="image/*">
-                            </div>
+                            <input type="file" class="form-control form-control-lg custom-file-input @error('logo') is-invalid @enderror" 
+                                   id="logo" name="logo" accept="image/*">
                             @error('logo')
                                 <div class="invalid-feedback" style="margin-top: 0.5rem;">{{ $message }}</div>
                             @enderror
@@ -119,9 +111,9 @@
                         @enderror
                     </div>
 
-                    <div class="d-flex align-items-center gap-2 mb-5 mt-5 pb-3" style="border-bottom: 2px solid #c79c60;">
+                    <div class="d-flex align-items-center gap-2 mb-5 mt-5 pb-3" style="border-bottom: 2px solid #c79c60; white-space: nowrap;">
                         <i class="bi bi-telephone gold-text" style="font-size: 1.5rem;"></i>
-                        <h5 class="mb-0 gold-text">Informations de contact</h5>
+                        <h5 class="mb-0 gold-text" style="white-space: nowrap;">Informations de contact</h5>
                     </div>
 
                     <div class="row mb-5">
@@ -190,20 +182,12 @@
                         @enderror
                     </div>
 
-                    <div class="mb-4">
+                    <div class="mb-5">
                         <label for="photo" class="form-label gold-text" style="font-weight: 600; margin-bottom: 0.75rem; display: block;">
                             Photo (dimensions fixes)
                         </label>
-                        <div class="file-input-wrapper">
-                            <div class="file-input-custom" id="photo-custom">
-                                <span class="file-input-button">
-                                    <i class="bi bi-cloud-upload me-1"></i>Choisir un fichier
-                                </span>
-                                <span class="file-input-text" id="photo-text">Aucun fichier choisi</span>
-                            </div>
-                            <input type="file" class="form-control form-control-lg @error('photo') is-invalid @enderror" 
-                                   id="photo" name="photo" accept="image/*">
-                        </div>
+                        <input type="file" class="form-control form-control-lg custom-file-input @error('photo') is-invalid @enderror" 
+                               id="photo" name="photo" accept="image/*">
                         @error('photo')
                             <div class="invalid-feedback" style="margin-top: 0.5rem;">{{ $message }}</div>
                         @enderror
@@ -215,9 +199,9 @@
                         @endif
                     </div>
 
-                    <div class="d-flex align-items-center gap-2 mb-4 mt-5 pb-3" style="border-bottom: 2px solid #c79c60;">
+                    <div class="d-flex align-items-center gap-2 mb-4 mt-5 pb-3" style="border-bottom: 2px solid #c79c60; white-space: nowrap;">
                         <i class="bi bi-gear gold-text" style="font-size: 1.5rem;"></i>
-                        <h5 class="mb-0 gold-text">Équipements</h5>
+                        <h5 class="mb-0 gold-text" style="white-space: nowrap;">Équipements</h5>
                     </div>
                     <div class="row mb-4">
                         @foreach($equipements as $equipement)
@@ -237,9 +221,9 @@
                         @endforeach
                     </div>
 
-                    <div class="d-flex align-items-center gap-2 mb-4 mt-5 pb-3" style="border-bottom: 2px solid #c79c60;">
+                    <div class="d-flex align-items-center gap-2 mb-4 mt-5 pb-3" style="border-bottom: 2px solid #c79c60; white-space: nowrap;">
                         <i class="bi bi-info-circle gold-text" style="font-size: 1.5rem;"></i>
-                        <h5 class="mb-0 gold-text">Informations supplémentaires</h5>
+                        <h5 class="mb-0 gold-text" style="white-space: nowrap;">Informations supplémentaires</h5>
                     </div>
                     <div class="row mb-4">
                         <div class="col-md-6">
@@ -406,9 +390,9 @@
                     </div>
 
                     @if($champsSupplementaires->count() > 0)
-                        <div class="d-flex align-items-center gap-2 mb-4 mt-5 pb-3" style="border-bottom: 2px solid #c79c60;">
+                        <div class="d-flex align-items-center gap-2 mb-4 mt-5 pb-3" style="border-bottom: 2px solid #c79c60; white-space: nowrap;">
                             <i class="bi bi-list-ul gold-text" style="font-size: 1.5rem;"></i>
-                            <h5 class="mb-0 gold-text">Champs supplémentaires</h5>
+                            <h5 class="mb-0 gold-text" style="white-space: nowrap;">Champs supplémentaires</h5>
                         </div>
                         @foreach($champsSupplementaires as $champ)
                             <div class="mb-4">
@@ -481,18 +465,6 @@ document.getElementById('region_id').addEventListener('change', function() {
     }
 });
 
-// File input custom styling
-document.getElementById('logo').addEventListener('change', function(e) {
-    const fileName = e.target.files[0] ? e.target.files[0].name : 'Aucun fichier choisi';
-    document.getElementById('logo-text').textContent = fileName;
-    document.getElementById('logo-custom').classList.toggle('has-file', e.target.files[0]);
-});
-
-document.getElementById('photo').addEventListener('change', function(e) {
-    const fileName = e.target.files[0] ? e.target.files[0].name : 'Aucun fichier choisi';
-    document.getElementById('photo-text').textContent = fileName;
-    document.getElementById('photo-custom').classList.toggle('has-file', e.target.files[0]);
-});
 </script>
 @endpush
 @endsection

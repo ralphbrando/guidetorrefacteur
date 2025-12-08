@@ -72,28 +72,39 @@
                                                 <div class="d-flex align-items-baseline gap-2 mb-2">
                                                     <span class="fs-3 fw-bold gold-text">
                                                         @php
-                                                            $prix = is_numeric($offre->prix) ? (float)$offre->prix : 0;
-                                                            echo number_format($prix, 2, ',', ' ') . ' €';
+                                                            $prixValue = 0.00;
+                                                            if (isset($offre->prix) && $offre->prix !== null) {
+                                                                $prixValue = is_numeric($offre->prix) ? (float)$offre->prix : 0.00;
+                                                            }
+                                                            $prixFormatted = number_format((float)$prixValue, 2, ',', ' ');
                                                         @endphp
+                                                        {{ $prixFormatted }} €
                                                     </span>
                                                     @if(isset($offre->nombre_guides) && $offre->nombre_guides > 0)
-                                                        <span class="badge" style="background: var(--bg-glass-light); color: var(--text-secondary);">
+                                                        <span class="badge" style="background: rgba(199, 156, 96, 0.15); color: #c79c60; padding: 0.5rem 1rem;">
                                                             <i class="bi bi-book me-1"></i>{{ $offre->nombre_guides }} Guides
                                                         </span>
                                                     @endif
                                                 </div>
-                                                @if(isset($offre->limite) && $offre->limite !== null)
+                                                @if(isset($offre->limite) && $offre->limite !== null && $offre->limite > 0)
                                                     <small class="text-muted d-block mb-2">
                                                         <i class="bi bi-people me-1"></i>
                                                         @php
-                                                            $limite = is_numeric($offre->limite) ? (int)$offre->limite : 0;
-                                                            $reserve = is_numeric($offre->reserve) ? (int)$offre->reserve : 0;
-                                                            $disponibles = max(0, $limite - $reserve);
-                                                            echo $disponibles . ' places disponibles sur ' . $limite;
+                                                            $limiteValue = isset($offre->limite) && is_numeric($offre->limite) ? (int)$offre->limite : 0;
+                                                            $reserveValue = isset($offre->reserve) && is_numeric($offre->reserve) ? (int)$offre->reserve : 0;
+                                                            $disponiblesValue = max(0, $limiteValue - $reserveValue);
                                                         @endphp
+                                                        {{ $disponiblesValue }} places disponibles sur {{ $limiteValue }}
                                                     </small>
                                                 @endif
-                                                @if(!$offre->isDisponible())
+                                                @php
+                                                    try {
+                                                        $isDisponible = method_exists($offre, 'isDisponible') ? $offre->isDisponible() : true;
+                                                    } catch (\Exception $e) {
+                                                        $isDisponible = true;
+                                                    }
+                                                @endphp
+                                                @if(!$isDisponible)
                                                     <div class="alert alert-danger mt-2 mb-0">
                                                         <small><i class="bi bi-x-circle me-1"></i>Plus de places disponibles</small>
                                                     </div>
