@@ -19,9 +19,9 @@ class Torrefacteur extends Resource
 
     public static $title = 'nom_brulerie';
 
-    public static $group = 'Torréfacteurs';
+    public static $group = 'Gestion';
 
-    public static $priority = 10;
+    public static $priority = 20;
 
     public static $search = [
         'id', 'nom_brulerie', 'email', 'telephone',

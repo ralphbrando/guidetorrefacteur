@@ -16,9 +16,9 @@ class OffrePartenaire extends Resource
 
     public static $title = 'nom';
 
-    public static $group = 'Offres & équipements';
+    public static $group = 'Configuration';
 
-    public static $priority = 20;
+    public static $priority = 10;
 
     public static $search = [
         'id', 'code', 'nom',

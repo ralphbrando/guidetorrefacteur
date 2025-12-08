@@ -19,37 +19,6 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
         
         Nova::name('Guide des Torréfacteurs');
 
-        // Organize resources in categories
-        Nova::groupBy(function ($resource) {
-            // Define categories for resources
-            $categories = [
-                'Gestion' => [
-                    \App\Nova\User::class,
-                    \App\Nova\Torrefacteur::class,
-                    \App\Nova\Paiement::class,
-                ],
-                'Géographie' => [
-                    \App\Nova\Region::class,
-                    \App\Nova\Departement::class,
-                ],
-                'Configuration' => [
-                    \App\Nova\OffrePartenaire::class,
-                    \App\Nova\Equipement::class,
-                    \App\Nova\ChampSupplementaire::class,
-                ],
-            ];
-
-            // Find which category this resource belongs to
-            foreach ($categories as $category => $resources) {
-                if (in_array(get_class($resource), $resources)) {
-                    return $category;
-                }
-            }
-
-            // Default category
-            return 'Autres';
-        });
-
         Nova::serving(function () {
             Nova::theme(asset('vendor/nova/css/coffee-theme.css'));
         });

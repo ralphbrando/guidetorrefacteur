@@ -18,9 +18,9 @@ class Equipement extends Resource
 
     public static $title = 'nom';
 
-    public static $group = 'Offres & équipements';
+    public static $group = 'Configuration';
 
-    public static $priority = 30;
+    public static $priority = 20;
 
     public static $search = [
         'id', 'nom',
