@@ -58,10 +58,10 @@
                 </h5>
                 <div class="row g-4">
                     <div class="col-md-4">
-                        <div class="card h-100" style="border: 2px solid #e0e0e0; border-radius: 16px; transition: all 0.3s ease; background: #fff; cursor: pointer;" 
+                        <div class="card h-100" style="border: 2px solid #e0e0e0; border-radius: 16px; transition: all 0.3s ease; background: #fff; cursor: pointer; padding: 5px;" 
                              onmouseover="this.style.borderColor='#c79c60'; this.style.transform='translateY(-5px)'; this.style.boxShadow='0 8px 20px rgba(199, 156, 96, 0.2)';" 
                              onmouseout="this.style.borderColor='#e0e0e0'; this.style.transform='translateY(0)'; this.style.boxShadow='none';">
-                            <div class="card-body p-4 text-center" style="display: flex; flex-direction: column; justify-content: space-between; min-height: 200px;">
+                            <div class="card-body p-4 text-center" style="display: flex; flex-direction: column; justify-content: space-between; min-height: 200px; padding: 1rem;">
                                 <div>
                                     <div style="width: 64px; height: 64px; border-radius: 50%; background: rgba(199, 156, 96, 0.15); display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">
                                         <i class="bi bi-eye fs-2 gold-text"></i>
@@ -71,7 +71,7 @@
                                         Visualisez le guide directement dans votre navigateur
                                     </p>
                                 </div>
-                                <a href="{{ route('pdf.generate', ['type' => 'preview']) }}" class="tm-more-button btn w-100 mt-3" target="_blank" style="padding: 0.875rem 2rem; font-weight: 600; border: none; display: inline-flex; align-items: center; justify-content: center;">
+                                <a href="{{ route('pdf.generate', ['type' => 'preview']) }}" class="tm-more-button btn w-100 mt-3" target="_blank" style="padding: 0.875rem 2rem; font-weight: 600; border: none; display: inline-flex; align-items: center; justify-content: center; margin-top: auto; align-self: center;">
                                     <i class="bi bi-file-pdf me-2"></i>Ouvrir le PDF
                                 </a>
                             </div>
@@ -79,10 +79,10 @@
                     </div>
                     
                     <div class="col-md-4">
-                        <div class="card h-100" style="border: 2px solid #e0e0e0; border-radius: 16px; transition: all 0.3s ease; background: #fff; cursor: pointer;" 
+                        <div class="card h-100" style="border: 2px solid #e0e0e0; border-radius: 16px; transition: all 0.3s ease; background: #fff; cursor: pointer; padding: 5px;" 
                              onmouseover="this.style.borderColor='#c79c60'; this.style.transform='translateY(-5px)'; this.style.boxShadow='0 8px 20px rgba(199, 156, 96, 0.2)';" 
                              onmouseout="this.style.borderColor='#e0e0e0'; this.style.transform='translateY(0)'; this.style.boxShadow='none';">
-                            <div class="card-body p-4 text-center" style="display: flex; flex-direction: column; justify-content: space-between; min-height: 200px;">
+                            <div class="card-body p-4 text-center" style="display: flex; flex-direction: column; justify-content: space-between; min-height: 200px; padding: 1rem;">
                                 <div>
                                     <div style="width: 64px; height: 64px; border-radius: 50%; background: rgba(199, 156, 96, 0.15); display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">
                                         <i class="bi bi-printer fs-2 gold-text"></i>
@@ -92,7 +92,7 @@
                                         Téléchargez le PDF haute résolution pour l'impression
                                     </p>
                                 </div>
-                                <a href="{{ route('pdf.generate', ['type' => 'print']) }}" class="tm-more-button btn w-100 mt-3" style="padding: 0.875rem 2rem; font-weight: 600; border: none; display: inline-flex; align-items: center; justify-content: center;">
+                                <a href="{{ route('pdf.generate', ['type' => 'print']) }}" class="tm-more-button btn w-100 mt-3" style="padding: 0.875rem 2rem; font-weight: 600; border: none; display: inline-flex; align-items: center; justify-content: center; margin-top: auto; align-self: center;">
                                     <i class="bi bi-download me-2"></i>Télécharger
                                 </a>
                             </div>
@@ -100,10 +100,10 @@
                     </div>
                     
                     <div class="col-md-4">
-                        <div class="card h-100" style="border: 2px solid #e0e0e0; border-radius: 16px; transition: all 0.3s ease; background: #fff; cursor: pointer;" 
+                        <div class="card h-100" style="border: 2px solid #e0e0e0; border-radius: 16px; transition: all 0.3s ease; background: #fff; cursor: pointer; padding: 5px;" 
                              onmouseover="this.style.borderColor='#c79c60'; this.style.transform='translateY(-5px)'; this.style.boxShadow='0 8px 20px rgba(199, 156, 96, 0.2)';" 
                              onmouseout="this.style.borderColor='#e0e0e0'; this.style.transform='translateY(0)'; this.style.boxShadow='none';">
-                            <div class="card-body p-4 text-center" style="display: flex; flex-direction: column; justify-content: space-between; min-height: 200px;">
+                            <div class="card-body p-4 text-center" style="display: flex; flex-direction: column; justify-content: space-between; min-height: 200px; padding: 1rem;">
                                 <div>
                                     <div style="width: 64px; height: 64px; border-radius: 50%; background: rgba(199, 156, 96, 0.15); display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">
                                         <i class="bi bi-palette fs-2 gold-text"></i>
@@ -113,7 +113,7 @@
                                         Téléchargez le PDF pour édition dans Adobe Illustrator
                                     </p>
                                 </div>
-                                <a href="{{ route('pdf.illustrator') }}" class="tm-more-button btn w-100 mt-3" style="padding: 0.875rem 2rem; font-weight: 600; border: none; display: inline-flex; align-items: center; justify-content: center;">
+                                <a href="{{ route('pdf.illustrator') }}" class="tm-more-button btn w-100 mt-3" style="padding: 0.875rem 2rem; font-weight: 600; border: none; display: inline-flex; align-items: center; justify-content: center; margin-top: auto; align-self: center;">
                                     <i class="bi bi-file-earmark-image me-2"></i>Télécharger
                                 </a>
                             </div>

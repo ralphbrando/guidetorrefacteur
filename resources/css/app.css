@@ -875,7 +875,7 @@ textarea {
 .card {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     transition: var(--transition-smooth);
-    padding: 1rem;
+    padding: 5px;
     margin: 0.75rem 0;
 }
 
@@ -984,4 +984,62 @@ body {
 .offer-card .form-check-input:hover {
     border-color: var(--gold);
     transform: scale(1.1);
+}
+
+/* Padding et margin pour tous les blocs */
+.tm-special-item,
+.card,
+.alert,
+.card-body,
+.card-header,
+.tm-section > div,
+.tm-popular-item,
+.tm-about-item,
+.tm-menu-item,
+.form-group,
+.form-control-group,
+[class*="col-"] > div:not(.row):not(.tm-section-header-container),
+.tm-section-header-container {
+    padding: 0.75rem 1rem;
+    margin: 0.5rem 0;
+}
+
+/* Padding interne pour les cards */
+.card {
+    padding: 5px;
+}
+
+/* Centrage du bouton en bas dans les cards */
+.card-body[style*="display: flex"][style*="flex-direction: column"] {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+}
+
+.card-body[style*="display: flex"][style*="flex-direction: column"] > a:last-child,
+.card-body[style*="display: flex"][style*="flex-direction: column"] > button:last-child {
+    margin-top: auto;
+    align-self: center;
+    width: 100%;
+    text-align: center;
+}
+
+/* Ajustements spécifiques pour éviter les doubles paddings */
+.tm-special-item[style*="padding"],
+.card[style*="padding"],
+.alert[style*="padding"] {
+    padding: inherit !important;
+}
+
+/* Sections principales */
+.tm-section {
+    padding: 2rem 0;
+    margin: 1rem 0;
+}
+
+/* Conteneurs de formulaires */
+form > div,
+form .row > div {
+    padding: 0.5rem;
+    margin: 0.25rem 0;
 }
