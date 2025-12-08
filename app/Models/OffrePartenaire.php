@@ -22,7 +22,6 @@ class OffrePartenaire extends Model
     ];
 
     protected $casts = [
-        'prix' => 'decimal',
         'actif' => 'boolean',
     ];
 
