@@ -58,7 +58,7 @@
                                 <li>
                                     <form method="POST" action="{{ route('logout') }}" class="d-inline">
                                         @csrf
-                                        <button type="submit" class="btn btn-link text-white p-0" style="background: none; border: none; padding: 15px 15px 20px 30px !important; font-weight: 700; text-transform: uppercase; transition: all 0.3s ease;">Déconnexion</button>
+                                        <button type="submit" class="btn btn-link gold-text p-0" style="background: none; border: none; padding: 15px 15px 20px 30px !important; font-weight: 700; text-transform: uppercase; transition: all 0.3s ease; color: #c79c60 !important;">Déconnexion</button>
                                     </form>
                                 </li>
                             @else

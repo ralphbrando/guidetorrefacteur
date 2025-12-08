@@ -115,6 +115,17 @@
     width: 80%;
 }
 
+/* Bouton de déconnexion doré */
+.tm-nav li form button.gold-text {
+    color: #c79c60 !important;
+    cursor: pointer;
+}
+
+.tm-nav li form button.gold-text:hover {
+    color: #d4a574 !important;
+    text-shadow: 0 0 10px rgba(199, 156, 96, 0.5);
+}
+
 .tm-logo-container img {
     transition: var(--transition-smooth);
     filter: drop-shadow(0 2px 4px rgba(199, 156, 96, 0.3));
