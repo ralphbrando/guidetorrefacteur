@@ -54,7 +54,7 @@
                         @foreach($offres as $offre)
                             <div class="col-md-6" style="margin-top: 1.5rem;">
                                 <div class="offer-card card h-100 position-relative {{ old('offre_partenaire_id', $torrefacteur->offre_partenaire_id ?? '') == $offre->id ? 'selected' : '' }}" 
-                                     style="cursor: pointer; border: 2px solid #e0e0e0; border-radius: 16px; overflow: hidden; transition: all 0.3s ease; background: #fff;"
+                                     style="cursor: pointer; border: 2px solid #e0e0e0; border-radius: 16px; overflow: hidden; transition: all 0.3s ease; background: #fff; min-height: 320px; display: flex; flex-direction: column;"
                                      onclick="document.getElementById('offre_{{ $offre->id }}').checked = true; document.getElementById('offre_{{ $offre->id }}').dispatchEvent(new Event('change'));">
                                     @if($offre->code === 'G')
                                         <div class="position-absolute top-0 end-0 m-3" style="z-index: 10;">
@@ -63,7 +63,7 @@
                                             </span>
                                         </div>
                                     @endif
-                                    <div class="card-body p-4">
+                                    <div class="card-body p-4" style="display: flex; flex-direction: column; flex: 1;">
                                         <div class="form-check m-0">
                                             <input class="form-check-input" type="radio" 
                                                    name="offre_partenaire_id" 
