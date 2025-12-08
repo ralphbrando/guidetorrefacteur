@@ -74,7 +74,8 @@
                         <hr class="tm-popular-item-hr">
                         <p>Apparaissez dans notre guide annuel et touchez un large public de passionnés de café à travers toute la France.</p>
                         <div class="order-now-container">
-                            <a href="{{ route('register') }}" class="order-now-link tm-handwriting-font">Inscription</a>
+                            <a href="{{ route('register') }}" class="order-now-link tm-handwriting-font" style="    font-size: 16px;
+    padding-top: 26px;">Inscription</a>
                         </div>
                     </div>              
                 </div>
@@ -87,7 +88,8 @@
                         <hr class="tm-popular-item-hr">
                         <p>Rejoignez une communauté de torréfacteurs passionnés et partagez votre savoir-faire avec d'autres professionnels.</p>
                         <div class="order-now-container">
-                            <a href="{{ route('register') }}" class="order-now-link tm-handwriting-font">Rejoindre</a>
+                            <a href="{{ route('register') }}" class="order-now-link tm-handwriting-font" style="    font-size: 16px;
+    padding-top: 26px;">Rejoindre</a>
                         </div>
                     </div>              
                 </div>
@@ -100,7 +102,8 @@
                         <hr class="tm-popular-item-hr">
                         <p>Mettez en avant votre brûlerie avec des photos, descriptions et informations détaillées pour attirer de nouveaux clients.</p>
                         <div class="order-now-container">
-                            <a href="{{ route('register') }}" class="order-now-link tm-handwriting-font">Découvrir</a>
+                            <a href="{{ route('register') }}" class="order-now-link tm-handwriting-font" style="    font-size: 16px;
+    padding-top: 26px;">Découvrir</a>
                         </div>
                     </div>              
                 </div>
