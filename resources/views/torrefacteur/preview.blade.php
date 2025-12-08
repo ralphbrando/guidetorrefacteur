@@ -106,7 +106,7 @@
                             <h5 class="gold-text mb-3">
                                 <i class="bi bi-tools me-2"></i>Équipements
                             </h5>
-                            <div class="row">
+                            <div class="row" style="margin-top: 11px;">
                                 @foreach($torrefacteur->equipements as $equipement)
                                     <div class="col-md-6 mb-2">
                                         <span class="badge" style="background: rgba(199, 156, 96, 0.15); color: #c79c60; padding: 0.5rem 1rem; font-weight: 500;">
