@@ -41,7 +41,8 @@ class OffrePartenaire extends Resource
             Textarea::make('Description')
                 ->nullable(),
 
-
+            Number::make('Prix')
+                ->rules('required'),
 
             Number::make('Nombre de Guides', 'nombre_guides')
                 ->rules('required', 'integer', 'min:0')
