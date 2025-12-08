@@ -34,7 +34,7 @@
                 </div>
                 
                 <div class="col-md-8">
-                    <h3 class="gold-text mb-4" style="font-weight: 700; border-bottom: 2px solid #c79c60; padding-bottom: 1rem;">
+                    <h3 class="gold-text mb-4" style="font-weight: 700; padding-bottom: 1rem;">
                         {{ $torrefacteur->nom_brulerie }}
                     </h3>
                     
