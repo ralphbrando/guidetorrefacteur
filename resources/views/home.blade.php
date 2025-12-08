@@ -11,20 +11,20 @@
             <img src="/img/template/light.png" alt="Light" class="light light-3">  
         </div>        
         <div class="row tm-welcome-content">
-            <h2 class="white-text tm-handwriting-font tm-welcome-header">
+            <h2 class="white-text tm-handwriting-font tm-welcome-header fade-in-down">
                 <img src="/img/template/header-line.png" alt="Line" class="tm-header-line">&nbsp;Bienvenue au&nbsp;&nbsp;
                 <img src="/img/template/header-line.png" alt="Line" class="tm-header-line">
             </h2>
-            <h2 class="gold-text tm-welcome-header-2">Guide 2026 des Torréfacteurs</h2>
-            <p class="gray-text tm-welcome-description">
+            <h2 class="gold-text tm-welcome-header-2 fade-in-down">Guide 2026 des Torréfacteurs</h2>
+            <p class="gray-text tm-welcome-description fade-in-up">
                 Bienvenue sur la plateforme du <span class="gold-text">Guide 2026 des Torréfacteurs</span>. 
                 Rejoignez notre communauté de torréfacteurs passionnés et faites découvrir votre brûlerie. 
                 Connectez-vous ou inscrivez-vous pour remplir vos informations et apparaître dans notre guide annuel.
             </p>
-            <div class="alert alert-warning mt-4" style="background: rgba(199, 156, 96, 0.2); border: 1px solid #c79c60; color: white;">
+            <div class="alert alert-warning mt-4 fade-in-up" style="animation-delay: 0.3s;">
                 <strong>⚠️ Informations à remplir AVANT le 21 Décembre 2025</strong>
             </div>
-            <div class="d-flex flex-wrap justify-content-center gap-3 mt-4">
+            <div class="d-flex flex-wrap justify-content-center gap-3 mt-4 fade-in-up" style="animation-delay: 0.4s;">
                 @auth
                     <a href="{{ route('torrefacteur.form') }}" class="tm-more-button tm-more-button-welcome">Mon Profil</a>
                 @else
@@ -39,7 +39,7 @@
 
 <div class="tm-main-section light-gray-bg">
     <div class="container" id="main">
-        <section class="tm-section row">
+        <section class="tm-section row fade-in-up">
             <div class="col-lg-9 col-md-9 col-sm-8">
                 <h2 class="tm-section-header gold-text tm-handwriting-font">Le Meilleur Café pour Vous</h2>
                 <h2>Guide 2026 des Torréfacteurs</h2>
@@ -50,14 +50,14 @@
                 </p>
                 <a href="#features" class="tm-more-button margin-top-30">En Savoir Plus</a> 
             </div>
-            <div class="col-lg-3 col-md-3 col-sm-4 tm-welcome-img-container">
+            <div class="col-lg-3 col-md-3 col-sm-4 tm-welcome-img-container fade-in-up" style="animation-delay: 0.2s;">
                 <div class="inline-block shadow-img">
                     <img src="/img/template/1.jpg" alt="Image" class="img-circle img-thumbnail">  
                 </div>              
             </div>            
         </section>          
         
-        <section class="tm-section tm-section-margin-bottom-0 row" id="features">
+        <section class="tm-section tm-section-margin-bottom-0 row fade-in-up" id="features" style="animation-delay: 0.3s;">
             <div class="col-lg-12 tm-section-header-container">
                 <h2 class="tm-section-header gold-text tm-handwriting-font">
                     <img src="/img/template/logo.png" alt="Logo" class="tm-site-logo"> Pourquoi Nous Rejoindre
@@ -107,7 +107,7 @@
             </div>          
         </section>
         
-        <section class="tm-section row">
+        <section class="tm-section row fade-in-up" style="animation-delay: 0.4s;">
             <div class="col-lg-12 tm-section-header-container">
                 <h2 class="tm-section-header gold-text tm-handwriting-font">
                     <img src="/img/template/logo.png" alt="Logo" class="tm-site-logo"> Comment ça Marche
