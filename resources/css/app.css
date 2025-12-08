@@ -195,6 +195,14 @@
     overflow: hidden;
     transition: var(--transition-smooth);
     transform: translateY(0);
+    cursor: pointer;
+    border-radius: 12px;
+}
+
+.tm-more-button.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .tm-more-button::before {
@@ -208,6 +216,7 @@
     background: rgba(255, 255, 255, 0.2);
     transform: translate(-50%, -50%);
     transition: width 0.6s, height 0.6s;
+    z-index: 0;
 }
 
 .tm-more-button:hover::before {
@@ -223,6 +232,12 @@
 
 .tm-more-button:active {
     transform: translateY(-1px);
+}
+
+.tm-more-button i,
+.tm-more-button span {
+    position: relative;
+    z-index: 1;
 }
 
 /* Popular Items améliorés */

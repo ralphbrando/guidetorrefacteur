@@ -11,8 +11,8 @@
         <div class="tm-hr-container"><hr class="tm-hr"></div>
     </div>
     <div class="col-12">
-        <div class="tm-special-item" style="background-color: white; padding: 40px;">
-                <div class="alert mb-5" style="background: linear-gradient(135deg, rgba(255, 193, 7, 0.15), rgba(255, 193, 7, 0.05)); border: 2px solid rgba(255, 193, 7, 0.4); border-left: 5px solid #ffc107; border-radius: 16px; color: #333; padding: 1.5rem; box-shadow: 0 4px 12px rgba(255, 193, 7, 0.1);">
+        <div class="tm-special-item" style="background-color: white; padding: 3rem;">
+                <div class="alert mb-5" style="background: linear-gradient(135deg, rgba(255, 193, 7, 0.15), rgba(255, 193, 7, 0.05)); border: 2px solid rgba(255, 193, 7, 0.4); border-left: 5px solid #ffc107; border-radius: 16px; color: #333; padding: 1.5rem; box-shadow: 0 4px 12px rgba(255, 193, 7, 0.1); margin-bottom: 2.5rem !important;">
                     <div class="d-flex align-items-start gap-3">
                         <div style="width: 48px; height: 48px; border-radius: 50%; background: rgba(255, 193, 7, 0.2); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
                             <i class="bi bi-exclamation-triangle fs-4" style="color: #ff9800;"></i>
@@ -31,26 +31,26 @@
                 <form method="POST" action="{{ route('payment.process') }}">
                     @csrf
 
-                    <div class="mb-5">
-                        <label for="nom_societe" class="form-label gold-text" style="font-weight: 600; font-size: 1.1rem; margin-bottom: 0.75rem;">
+                    <div class="mb-5" style="margin-bottom: 2.5rem !important;">
+                        <label for="nom_societe" class="form-label gold-text" style="font-weight: 600; font-size: 1.1rem; margin-bottom: 1rem; display: block;">
                             <i class="bi bi-building me-2"></i>Nom de la société <span class="text-danger">*</span>
                         </label>
                         <input type="text" class="form-control form-control-lg @error('nom_societe') is-invalid @enderror" 
                                id="nom_societe" name="nom_societe" 
                                value="{{ old('nom_societe', $torrefacteur->nom_brulerie ?? '') }}" 
                                placeholder="Nom de votre société" required
-                               style="padding: 0.875rem 1.25rem; border-radius: 12px; border: 2px solid #ddd; font-size: 1rem;">
+                               style="padding: 1rem 1.5rem; border-radius: 12px; border: 2px solid #ddd; font-size: 1rem;">
                         @error('nom_societe')
-                            <div class="invalid-feedback" style="margin-top: 0.5rem;">{{ $message }}</div>
+                            <div class="invalid-feedback" style="margin-top: 0.75rem; display: block;">{{ $message }}</div>
                         @enderror
                     </div>
 
-                    <div class="d-flex align-items-center gap-2 mb-5 pb-3" style="border-bottom: 2px solid #c79c60; white-space: nowrap;">
+                    <div class="d-flex align-items-center gap-2 mb-5 pb-4" style="border-bottom: 2px solid #c79c60; white-space: nowrap; margin-bottom: 2.5rem !important; padding-bottom: 1.5rem !important;">
                         <i class="bi bi-star-fill gold-text" style="font-size: 1.75rem;"></i>
                         <h4 class="mb-0 gold-text" style="font-weight: 700; font-size: 1.5rem;">Choisissez votre offre :</h4>
                     </div>
 
-                    <div class="row g-4">
+                    <div class="row g-4" style="margin-bottom: 2rem;">
                         @foreach($offres as $offre)
                             <div class="col-md-6">
                                 <div class="offer-card card h-100 position-relative {{ old('offre_partenaire_id', $torrefacteur->offre_partenaire_id ?? '') == $offre->id ? 'selected' : '' }}" 
@@ -128,7 +128,7 @@
                         @endforeach
                     </div>
 
-                    <div class="alert mt-5 mb-4" style="background: linear-gradient(135deg, rgba(199, 156, 96, 0.1), rgba(199, 156, 96, 0.05)); border: 2px solid rgba(199, 156, 96, 0.3); border-radius: 16px; color: #333; padding: 1.5rem;">
+                    <div class="alert mt-5 mb-5" style="background: linear-gradient(135deg, rgba(199, 156, 96, 0.1), rgba(199, 156, 96, 0.05)); border: 2px solid rgba(199, 156, 96, 0.3); border-radius: 16px; color: #333; padding: 1.5rem; margin-top: 3rem !important; margin-bottom: 2.5rem !important;">
                         <div class="d-flex align-items-start gap-3">
                             <div style="width: 48px; height: 48px; border-radius: 50%; background: rgba(199, 156, 96, 0.2); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
                                 <i class="bi bi-info-circle fs-4 gold-text"></i>
@@ -150,11 +150,11 @@
                         </div>
                     </div>
 
-                    <div class="d-grid gap-3 d-md-flex justify-content-md-end mt-5 pt-4" style="border-top: 2px solid #c79c60;">
-                        <a href="{{ route('torrefacteur.form') }}" class="tm-more-button" style="background: #f5f5f5; color: #333; border: 2px solid #ddd; padding: 0.875rem 2rem; font-weight: 600; min-width: 150px; text-align: center;">
+                    <div class="d-grid gap-3 d-md-flex justify-content-md-end mt-5 pt-5" style="border-top: 2px solid #c79c60; margin-top: 3rem !important; padding-top: 2rem !important;">
+                        <a href="{{ route('torrefacteur.form') }}" class="tm-more-button btn" style="background: #f5f5f5; color: #333; border: 2px solid #ddd; padding: 0.875rem 2rem; font-weight: 600; min-width: 150px; text-align: center; text-decoration: none; display: inline-flex; align-items: center; justify-content: center;">
                             <i class="bi bi-arrow-left me-2"></i>Retour
                         </a>
-                        <button type="submit" class="tm-more-button" style="padding: 0.875rem 2rem; font-weight: 600; min-width: 250px;">
+                        <button type="submit" class="tm-more-button btn" style="padding: 0.875rem 2rem; font-weight: 600; min-width: 250px; border: none; display: inline-flex; align-items: center; justify-content: center;">
                             <i class="bi bi-credit-card me-2"></i>Continuer vers le paiement
                         </button>
                     </div>
