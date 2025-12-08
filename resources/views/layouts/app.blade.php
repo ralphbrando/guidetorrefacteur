@@ -4,17 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'Guide 2026 des Torréfacteurs')</title>
+    <link rel="shortcut icon" href="/img/template/favicon.ico" type="image/x-icon" />
     
     <!-- Fonts -->
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,600,700' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Damion' rel='stylesheet' type='text/css'>
     
-    <!-- Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap from Template -->
+    <link href="/css/template/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome from Template -->
+    <link href="/css/template/font-awesome.min.css" rel="stylesheet">
+    
+    <!-- Bootstrap Icons (for additional icons) -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
     
     <!-- Template CSS -->
-    <link href="{{ asset('css/template/templatemo-style.css') }}" rel="stylesheet">
+    <link href="/css/template/templatemo-style.css" rel="stylesheet">
     
     <!-- Custom CSS -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -139,7 +145,9 @@
     </footer>
 
     <!-- Scripts -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- jQuery from Template -->
+    <script src="/js/template/jquery-1.11.2.min.js"></script>
+    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         // Preloader
