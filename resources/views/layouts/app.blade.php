@@ -131,6 +131,11 @@
                         <div class="alert alert-info mt-3">
                             <strong>Informations à remplir AVANT le 21 Décembre 2025</strong>
                         </div>
+                        <div class="mt-3">
+                            <a href="{{ route('legal.mentions') }}" class="gold-text" style="text-decoration: none; font-size: 0.9rem;">
+                                <i class="bi bi-file-text me-1"></i>Mentions légales
+                            </a>
+                        </div>
                     </div>
                 </div>          
             </div>  
@@ -138,7 +143,10 @@
         <div>
             <div class="container">
                 <div class="row tm-copyright">
-                    <p class="col-lg-12 small copyright-text text-center">Copyright &copy; {{ date('Y') }} Guide 2026 des Torréfacteurs. Tous droits réservés.</p>
+                    <p class="col-lg-12 small copyright-text text-center">
+                        Copyright &copy; {{ date('Y') }} Guide 2026 des Torréfacteurs. Tous droits réservés. | 
+                        <a href="{{ route('legal.mentions') }}" class="gold-text" style="text-decoration: none;">Mentions légales</a>
+                    </p>
                 </div>  
             </div>
         </div>

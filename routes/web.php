@@ -10,6 +10,9 @@ use App\Http\Controllers\PaymentController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
+// Legal pages
+Route::get('/mentions-legales', [App\Http\Controllers\LegalController::class, 'mentions'])->name('legal.mentions');
+
 // Authentication routes
 Route::middleware('guest')->group(function () {
     Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
