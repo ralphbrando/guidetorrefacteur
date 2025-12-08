@@ -3,22 +3,24 @@
 @section('title', 'Formulaire Torréfacteur')
 
 @section('content')
-<div class="row">
+<section class="tm-section row">
+    <div class="col-lg-12 tm-section-header-container">
+        <h2 class="tm-section-header gold-text tm-handwriting-font">
+            <img src="{{ asset('img/template/logo.png') }}" alt="Logo" class="tm-site-logo"> Formulaire Torréfacteur
+        </h2>
+        <div class="tm-hr-container"><hr class="tm-hr"></div>
+    </div>
     <div class="col-12">
-        <div class="card shadow-lg fade-in-up">
-            <div class="card-header bg-primary text-white">
-                <h4 class="mb-0 d-flex align-items-center gap-2">
-                    <i class="bi bi-file-earmark-text"></i>
-                    Informations à remplir AVANT le 21 Décembre 2025
-                </h4>
-            </div>
-            <div class="card-body">
+        <div class="alert alert-warning mb-4" style="background: rgba(199, 156, 96, 0.2); border: 1px solid #c79c60; color: #333;">
+            <strong>⚠️ Informations à remplir AVANT le 21 Décembre 2025</strong>
+        </div>
+        <div class="tm-special-item" style="background-color: white; padding: 40px;">
                 <form method="POST" action="{{ route('torrefacteur.save') }}" enctype="multipart/form-data">
                     @csrf
 
-                    <div class="d-flex align-items-center gap-2 mb-4 pb-3 border-bottom" style="border-color: var(--border-color) !important;">
-                        <i class="bi bi-info-circle" style="color: var(--coffee-accent); font-size: 1.5rem;"></i>
-                        <h5 class="mb-0" style="color: var(--coffee-accent);">Informations générales</h5>
+                    <div class="d-flex align-items-center gap-2 mb-4 pb-3" style="border-bottom: 2px solid #c79c60;">
+                        <i class="bi bi-info-circle gold-text" style="font-size: 1.5rem;"></i>
+                        <h5 class="mb-0 gold-text">Informations générales</h5>
                     </div>
                     
                     <div class="row mb-3">
@@ -90,9 +92,9 @@
                         @enderror
                     </div>
 
-                    <div class="d-flex align-items-center gap-2 mb-4 mt-5 pb-3 border-bottom" style="border-color: var(--border-color) !important;">
-                        <i class="bi bi-telephone" style="color: var(--coffee-accent); font-size: 1.5rem;"></i>
-                        <h5 class="mb-0" style="color: var(--coffee-accent);">Informations de contact</h5>
+                    <div class="d-flex align-items-center gap-2 mb-4 mt-5 pb-3" style="border-bottom: 2px solid #c79c60;">
+                        <i class="bi bi-telephone gold-text" style="font-size: 1.5rem;"></i>
+                        <h5 class="mb-0 gold-text">Informations de contact</h5>
                     </div>
 
                     <div class="row mb-3">
@@ -158,9 +160,9 @@
                         @endif
                     </div>
 
-                    <div class="d-flex align-items-center gap-2 mb-4 mt-5 pb-3 border-bottom" style="border-color: var(--border-color) !important;">
-                        <i class="bi bi-gear" style="color: var(--coffee-accent); font-size: 1.5rem;"></i>
-                        <h5 class="mb-0" style="color: var(--coffee-accent);">Équipements</h5>
+                    <div class="d-flex align-items-center gap-2 mb-4 mt-5 pb-3" style="border-bottom: 2px solid #c79c60;">
+                        <i class="bi bi-gear gold-text" style="font-size: 1.5rem;"></i>
+                        <h5 class="mb-0 gold-text">Équipements</h5>
                     </div>
                     <div class="row mb-3">
                         @foreach($equipements as $equipement)
@@ -179,9 +181,9 @@
                         @endforeach
                     </div>
 
-                    <div class="d-flex align-items-center gap-2 mb-4 mt-5 pb-3 border-bottom" style="border-color: var(--border-color) !important;">
-                        <i class="bi bi-plus-circle" style="color: var(--coffee-accent); font-size: 1.5rem;"></i>
-                        <h5 class="mb-0" style="color: var(--coffee-accent);">Informations supplémentaires</h5>
+                    <div class="d-flex align-items-center gap-2 mb-4 mt-5 pb-3" style="border-bottom: 2px solid #c79c60;">
+                        <i class="bi bi-plus-circle gold-text" style="font-size: 1.5rem;"></i>
+                        <h5 class="mb-0 gold-text">Informations supplémentaires</h5>
                     </div>
                     <div class="row mb-3">
                         <div class="col-md-6">
@@ -326,9 +328,9 @@
                     </div>
 
                     @if($champsSupplementaires->count() > 0)
-                        <div class="d-flex align-items-center gap-2 mb-4 mt-5 pb-3 border-bottom" style="border-color: var(--border-color) !important;">
-                            <i class="bi bi-list-ul" style="color: var(--coffee-accent); font-size: 1.5rem;"></i>
-                            <h5 class="mb-0" style="color: var(--coffee-accent);">Champs supplémentaires</h5>
+                        <div class="d-flex align-items-center gap-2 mb-4 mt-5 pb-3" style="border-bottom: 2px solid #c79c60;">
+                            <i class="bi bi-list-ul gold-text" style="font-size: 1.5rem;"></i>
+                            <h5 class="mb-0 gold-text">Champs supplémentaires</h5>
                         </div>
                         @foreach($champsSupplementaires as $champ)
                             <div class="mb-3">
@@ -355,19 +357,19 @@
                         @endforeach
                     @endif
 
-                    <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-5 pt-4 border-top" style="border-color: var(--border-color) !important;">
-                        <a href="{{ route('torrefacteur.preview') }}" class="btn btn-outline-secondary">
-                            <i class="bi bi-eye me-2"></i>Prévisualiser
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-5 pt-4" style="border-top: 2px solid #c79c60;">
+                        <a href="{{ route('torrefacteur.preview') }}" class="tm-more-button" style="background: #e4e4e4; color: #333;">
+                            Prévisualiser
                         </a>
-                        <button type="submit" class="btn btn-primary">
-                            <i class="bi bi-check-circle me-2"></i>Enregistrer
+                        <button type="submit" class="tm-more-button">
+                            Enregistrer
                         </button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
-</div>
+</section>
 
 @push('scripts')
 <script>

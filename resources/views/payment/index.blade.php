@@ -3,19 +3,18 @@
 @section('title', 'Offres Partenaires')
 
 @section('content')
-<div class="row justify-content-center">
-    <div class="col-12 col-lg-10">
-        <div class="card shadow-lg fade-in-up">
-            <div class="card-header bg-primary text-white">
-                <h4 class="mb-0 d-flex align-items-center gap-2">
-                    <i class="bi bi-credit-card"></i>
-                    Offres Partenaires
-                </h4>
-            </div>
-            <div class="card-body">
-                <div class="alert alert-warning mb-4">
+<section class="tm-section row">
+    <div class="col-lg-12 tm-section-header-container">
+        <h2 class="tm-section-header gold-text tm-handwriting-font">
+            <img src="{{ asset('img/template/logo.png') }}" alt="Logo" class="tm-site-logo"> Offres Partenaires
+        </h2>
+        <div class="tm-hr-container"><hr class="tm-hr"></div>
+    </div>
+    <div class="col-12">
+        <div class="tm-special-item" style="background-color: white; padding: 40px;">
+                <div class="alert alert-warning mb-4" style="background: rgba(199, 156, 96, 0.2); border: 1px solid #c79c60; color: #333;">
                     <div class="d-flex align-items-start gap-3">
-                        <i class="bi bi-exclamation-triangle fs-4" style="color: var(--coffee-gold);"></i>
+                        <i class="bi bi-exclamation-triangle fs-4 gold-text"></i>
                         <div>
                             <strong>Chers Partenaires,</strong> nous attirons votre attention que le nombre d'espaces publicitaires est limité. 
                             En conséquence les espaces disponibles seront servis en fonction du « premier commandé, premier servi » 
@@ -40,9 +39,9 @@
                         @enderror
                     </div>
 
-                    <div class="d-flex align-items-center gap-2 mb-4 pb-3 border-bottom" style="border-color: var(--border-color) !important;">
-                        <i class="bi bi-star" style="color: var(--coffee-accent); font-size: 1.5rem;"></i>
-                        <h5 class="mb-0" style="color: var(--coffee-accent);">Choisissez votre offre :</h5>
+                    <div class="d-flex align-items-center gap-2 mb-4 pb-3" style="border-bottom: 2px solid #c79c60;">
+                        <i class="bi bi-star gold-text" style="font-size: 1.5rem;"></i>
+                        <h5 class="mb-0 gold-text">Choisissez votre offre :</h5>
                     </div>
 
                     <div class="row g-4">
@@ -106,9 +105,9 @@
                         @endforeach
                     </div>
 
-                    <div class="alert alert-info mt-5">
+                    <div class="alert alert-info mt-5" style="background: rgba(199, 156, 96, 0.15); border: 1px solid #c79c60; color: #333;">
                         <div class="d-flex align-items-start gap-3">
-                            <i class="bi bi-info-circle fs-4" style="color: var(--coffee-accent);"></i>
+                            <i class="bi bi-info-circle fs-4 gold-text"></i>
                             <div>
                                 <strong>Modes de paiement disponibles :</strong>
                                 <ul class="mb-0 mt-2">
@@ -120,19 +119,19 @@
                         </div>
                     </div>
 
-                    <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-5 pt-4 border-top" style="border-color: var(--border-color) !important;">
-                        <a href="{{ route('torrefacteur.form') }}" class="btn btn-outline-secondary">
-                            <i class="bi bi-arrow-left me-2"></i>Retour
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-5 pt-4" style="border-top: 2px solid #c79c60;">
+                        <a href="{{ route('torrefacteur.form') }}" class="tm-more-button" style="background: #e4e4e4; color: #333;">
+                            Retour
                         </a>
-                        <button type="submit" class="btn btn-primary btn-lg">
-                            <i class="bi bi-arrow-right me-2"></i>Continuer vers le paiement
+                        <button type="submit" class="tm-more-button">
+                            Continuer vers le paiement
                         </button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
-</div>
+</section>
 @endsection
 
 
