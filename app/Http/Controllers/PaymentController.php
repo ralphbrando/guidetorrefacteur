@@ -7,8 +7,10 @@ use App\Models\OffrePartenaire;
 use App\Models\Paiement;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use Stripe\Stripe as StripeClient;
 use Stripe\PaymentIntent;
+use Stripe\Webhook;
 
 class PaymentController extends Controller
 {
