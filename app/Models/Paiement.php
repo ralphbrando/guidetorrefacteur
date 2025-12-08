@@ -23,7 +23,6 @@ class Paiement extends Model
     ];
 
     protected $casts = [
-        'montant' => 'decimal',
         'date_paiement' => 'datetime',
     ];
 
