@@ -119,7 +119,7 @@
                     <div class="row mb-5">
                         <div class="col-md-3">
                             <label for="prenom_nom_representant" class="form-label gold-text" style="font-weight: 600; margin-bottom: 0.75rem; display: block;">
-                                Prénom NOM représentant <span class="text-danger">*</span>
+                                Nom du représentant <span class="text-danger">*</span>
                             </label>
                             <input type="text" class="form-control form-control-lg @error('prenom_nom_representant') is-invalid @enderror" 
                                    id="prenom_nom_representant" name="prenom_nom_representant" 

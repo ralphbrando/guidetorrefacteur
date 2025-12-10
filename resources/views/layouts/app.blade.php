@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title', 'Guide 2026 des Torréfacteurs')</title>
     <link rel="shortcut icon" href="/img/template/favicon.ico" type="image/x-icon" />
     
@@ -190,6 +191,57 @@
             }
         });
     </script>
+    
+    <!-- CSRF Token Management -->
+    <script>
+        // Configuration du token CSRF pour toutes les requêtes AJAX
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        // Fonction pour rafraîchir le token CSRF
+        function refreshCsrfToken() {
+            return $.get('/').then(function(html) {
+                var parser = new DOMParser();
+                var doc = parser.parseFromString(html, 'text/html');
+                var newToken = doc.querySelector('meta[name="csrf-token"]');
+                if (newToken) {
+                    var token = newToken.getAttribute('content');
+                    $('meta[name="csrf-token"]').attr('content', token);
+                    $.ajaxSetup({
+                        headers: {
+                            'X-CSRF-TOKEN': token
+                        }
+                    });
+                    return token;
+                }
+                return null;
+            });
+        }
+
+        // Gestion automatique de l'erreur 419 (Page Expired)
+        $(document).ajaxError(function(event, xhr, settings) {
+            if (xhr.status === 419) {
+                // Rafraîchir le token et réessayer
+                refreshCsrfToken().then(function() {
+                    // Réessayer la requête originale
+                    $.ajax(settings);
+                }).catch(function() {
+                    // Si échec, recharger la page
+                    alert('Votre session a expiré. La page va être rechargée.');
+                    location.reload();
+                });
+            }
+        });
+
+        // Rafraîchir le token CSRF toutes les 30 minutes pour éviter l'expiration
+        setInterval(function() {
+            refreshCsrfToken();
+        }, 30 * 60 * 1000); // 30 minutes
+    </script>
+    
     <script src="{{ asset('js/app.js') }}"></script>
     @stack('scripts')
 </body>
