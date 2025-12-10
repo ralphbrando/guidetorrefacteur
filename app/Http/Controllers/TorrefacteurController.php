@@ -38,7 +38,7 @@ class TorrefacteurController extends Controller
             'email' => 'required|email|max:255',
             'logo' => 'nullable|image|max:2048',
             'texte_descriptif' => 'nullable|string',
-            'site_internet' => 'nullable|url|max:255',
+            'site_internet' => 'nullable|string|max:255',
             'photo' => 'nullable|image|max:5120',
             'equipements' => 'nullable|array',
             'equipements.*' => 'exists:equipements,id',
